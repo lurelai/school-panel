@@ -1,0 +1,22 @@
+{
+  "name": "school-panel",
+  "version": "1.0.0",
+  "description": "That's my first medium-sized project; it will be made with HTML, CSS, JavaScript, Node.js (express and mongoose), and MongoDB (Atlas)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lurelai/school-panel.git"
+  },
+  "author": "Lucas Ariel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lurelai/school-panel/issues"
+  },
+  "homepage": "https://github.com/lurelai/school-panel#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
