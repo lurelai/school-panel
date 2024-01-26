@@ -1,5 +1,7 @@
 const loginController = (req, res)=>{
-    res.send('Okay')
+    console.log(req.body)
+
+    res.json(req.body)
 }
 
 module.exports = loginController;

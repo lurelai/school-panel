@@ -1,5 +1,7 @@
 const express = require('express')
-const loginRoute = require('./src/routes/loginRoute.js')
+const databaseConnection = require('./src/database/db') // Database connection
+const loginRoute = require('./src/routes/loginRoute') // Login route
+
 
 // Init te app
 const app = express()
@@ -9,9 +11,13 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.use('/login', loginRoute)
 
 // routes
+app.use('/login', loginRoute)
+
+
+// Connect with the database
+databaseConnection()
 
 
 // default route
