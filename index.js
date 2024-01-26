@@ -1,7 +1,6 @@
 const express = require('express')
 const databaseConnection = require('./src/database/db') // Database connection
-const loginRoute = require('./src/routes/loginRoute') // Login route
-
+const registerRouter = require('./src/routes/registerRouter') // Register Router
 
 // Init te app
 const app = express()
@@ -13,7 +12,7 @@ app.use(express.urlencoded({extended: true}))
 
 
 // routes
-app.use('/login', loginRoute)
+app.use('/register', registerRouter)
 
 
 // Connect with the database
