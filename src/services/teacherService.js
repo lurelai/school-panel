@@ -2,8 +2,8 @@ const Teacher = require('../models/teacherModel')
 
 const createNewTeacher = async body => {
     try{
-        let theNewTeacher = await Teacher.create(body)
-        return theNewTeacher
+        await Teacher.create(body)
+        return 'okay'
     }
     catch(err){
         console.log(err)

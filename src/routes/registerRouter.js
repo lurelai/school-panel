@@ -1,7 +1,11 @@
 const router = require('express').Router()
-const registerController = require('../controllers/registerController')
 
-router.post('/', registerController)
+const teacherController = require('../controllers/teacherController')
+const studentController = require('../controllers/studentController')
 
-module.exports = router;
+router.post('/teacher-register', teacherController)
+
+router.post('/student-register', studentController)
+
+module.exports = app => {app.use('/auth/', router)};
 
