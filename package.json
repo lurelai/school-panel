@@ -1,7 +1,7 @@
 {
   "name": "school-panel",
   "version": "1.0.0",
-  "description": "That's my first medium-sized project; it will be made with HTML, CSS, JavaScript, Node.js (express and mongoose), and MongoDB (Atlas)",
+  "description": "That's my first time trying to use databases; I will to use JavaScript, Node.js (express and mongoose), and MongoDB (Atlas)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
