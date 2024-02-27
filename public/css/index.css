@@ -45,14 +45,21 @@
 
 /* FOOTER */
 .footer{
-    margin-top: 10px;
-
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 200px;
+    justify-content: center;
+
+    height: 27vh;
+
+    margin-top: 20px;
 }
 
+.footer__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+
+    width: 90vw;
+}
 
 /* ELEMENTS */
 
