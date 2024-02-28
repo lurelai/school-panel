@@ -17,19 +17,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <div class="left">
-            <span class=""></span>
+    <div class="container">
+        <header class="header">
+            <div class="left">
+                <span class="back-button">
+                    <a class="back-link" href=""> Comeback </a>
+                </span>
 
-            <p class="header__locale"> 
-                <a href="" class="header__link">home</a> 
-                <a href="" class="header__link">teste</a> 
-            </p>
-        </div>
-        <div class="right">
-            <p class="header__student"> Student Name </p>
-        </div>
-    </header>
+                <p class="header__locale"> 
+                    <a href="/student/home" class="header__link">home</a> 
+                    <a href="/student/grade" class="header__link">grade</a> 
+                </p>
+            </div>
+            <div class="right">
+                <p class="header__student"> Student Name </p>
+            </div>
+        </header>
+    </div>
+    <script src="/js/createBackButton.js"></script>
 </body>
 </html>
 
