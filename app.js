@@ -9,9 +9,13 @@ app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/index.html'))
 })
 
-app.get('/student-home', (req, res)=>{
+app.get('/student/home', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/student-home.html'))
 })
 
-app.listen(8080, ()=>{ console.log(" Connected ")})
+app.get('/student/grade', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'views/student-grade.html'))
+})
+
+app.listen(8080, ()=>{ console.log(" Connected ") })
 
