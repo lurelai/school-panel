@@ -16,7 +16,7 @@
 }
 
 .main, .main__ul{
-    width: 100vw;
+    max-width: 100vw;
     min-height: calc(100vh - 15.7vh - 30px);
 }
 
@@ -37,7 +37,6 @@
 
 .main__li{
     display: flex;
-    justify-content: center;
     align-items: center;
 
     list-style: none;
@@ -54,4 +53,49 @@
     color: white;
 }
 
+/* ELEMENTS */
+.header__link{
+    color: white;
 
+    text-transform: none;
+    letter-spacing: 3px;
+
+    text-decoration: none;
+
+    font-size: 18px;
+}
+
+.header__link:hover{
+    text-decoration: underline; 
+}
+
+.header__link::before{
+    content: '/';
+}
+
+.header__student{
+    font-size: 22px;
+
+    color: white;
+
+    text-transform: capitalize;
+}
+
+.li__paragraph{
+    font-size: 20px;
+
+    padding-left: 14px;
+}
+
+.li__span{
+    letter-spacing: 2px;
+}
+
+.li__span:after{
+    margin: 0 6px;
+    content: " - ";
+}
+
+.li__span-year:after{
+    content: "";
+}
