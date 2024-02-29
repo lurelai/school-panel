@@ -1,0 +1,49 @@
+.main{
+    max-width: 100vw;
+    min-height: calc(100vh - 15.7vh - 20px;);
+
+    margin-top: 20px;
+}
+
+.main__table{
+    width: 100%;
+}
+
+/* Geral */
+.main__table, .tbody__td, .thead__th{
+    font-size: 20px;
+
+    text-align: center;
+}
+
+.thead__th, .tbody__td{
+    padding: 8px;
+}
+
+.thead__th, .tbody__subject{
+    font-weight: bold;
+}
+
+.tbody__teacher, .thead__teacher{
+    text-align: left;
+}
+
+/* Thead */
+.thead__subject{
+    width: 250px;
+}
+
+
+.thead__unit, .thead__grade-point{
+    width: 150px;
+}
+
+.thead__teacher, .tbody__teacher{
+    padding-left: 60px;
+}
+
+/* Tbody */
+.tbody__unit, .tbody__grade-point{
+}
+
+

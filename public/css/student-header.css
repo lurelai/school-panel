@@ -37,3 +37,15 @@
     text-transform: capitalize;
 }
 
+.left{
+    display: flex;
+    gap: 0 10px;
+}
+
+.back-button{
+}
+
+.back-link{
+    text-decoration: none;
+}
+
