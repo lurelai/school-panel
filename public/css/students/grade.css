@@ -26,6 +26,8 @@
 
 .tbody__teacher, .thead__teacher{
     text-align: left;
+
+    padding-left: 60px;
 }
 
 /* Thead */
@@ -37,12 +39,8 @@
     width: 150px;
 }
 
-.thead__teacher, .tbody__teacher{
-    padding-left: 60px;
-}
-
 /* Tbody */
-.tbody__unit, .tbody__grade-point{
+.tbody__teacher{
+    font-size: 20px;
 }
-
 
