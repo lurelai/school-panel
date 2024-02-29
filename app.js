@@ -11,11 +11,11 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/student/home', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'views/student-home.html'))
+    res.sendFile(path.join(__dirname, 'views/students/home.html'))
 })
 
 app.get('/student/grade', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'views/student-grade.html'))
+    res.sendFile(path.join(__dirname, 'views/students/grade.html'))
 })
 
 app.listen(8080, ()=>{ console.log(" Connected ") })
