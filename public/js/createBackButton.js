@@ -5,7 +5,6 @@ const backLink = document.querySelector(".back-link")
 const createButton = ()=>{
     // Verify if the length of links if > 1
     if ( !(links.length > 1) ){
-        console.log('here')
         backLink.innerText = ''
         return;
     }
