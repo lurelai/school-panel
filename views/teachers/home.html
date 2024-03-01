@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <title> Home </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta name="author" content="Lucas Ariel">
 
-    <!-- CSS --> 
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/students/home.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/teachers/home.css">
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,24 +30,24 @@
             </div>
 
             <div class="right">
-                <p class="header__student"> Student Name </p>
+                <p class="header__student"> Teacher Name </p>
             </div>
         </header>
-
         <main class="main">
             <ul class="main__ul">
-                <a href="" class="main__link">
-                    <li class="main__li">
-                        <p class="li__paragraph"> 
-                            <span class="li__span-school-year li__span"> Terceiro ano<span style="color: #a020f0;">(medio)</span> </span> 
-                            <span class="li__span-class li__span">Turma B</span> 
-                            <span class="li__span-year li__span">2024</span>  
-                        </p>
-                    </li>
-                </a>
+                <li class="main__year">
+                    <p class="year__paragraph">2024</p>
+                    <ul class="year__ul">
+                        <li class="year__li"> 
+                            <span class="year__school-year"> 2° Year </span>
+                            <span class="year__class"> class A </span>
+                            <span class="year__subject"> Math </span>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </main>
-    </div>
+    </div>  
     <script src="/js/createBackButton.js"></script>
 </body>
 </html>

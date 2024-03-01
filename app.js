@@ -18,5 +18,9 @@ app.get('/student/grade', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/students/grade.html'))
 })
 
+app.get('/teacher/home', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'views/teachers/home.html'))
+})
+
 app.listen(8080, ()=>{ console.log(" Connected ") })
 
