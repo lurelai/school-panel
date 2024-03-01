@@ -52,9 +52,9 @@
                 <tbody>
                     <tr class="tbody__tr">
                         <td class="tbody__td tbody__subject"> Math </td>
-                        <td class="tbody__td tbody__unit"> 6 </td>
-                        <td class="tbody__td tbody__unit"> 6 </td>
-                        <td class="tbody__td tbody__unit"> 6 </td>
+                        <td class="tbody__td tbody__unit"> 6.5 </td>
+                        <td class="tbody__td tbody__unit"> 6.5 </td>
+                        <td class="tbody__td tbody__unit"> 6.5 </td>
                         <td class="tbody__td tbody__grade-point"></td>
                         <td class="tbody__td tbody__teacher"> Jucema Oliveira dos Santos </td>
                     </tr>
@@ -62,8 +62,16 @@
             </table>
         </main>
     </div>
-    <script type="module" src="/js/grade/main.js"></script>
     <script src="/js/createBackButton.js"></script>
+    <script type="module">
+        import { main } from '/js/grade/main.js'
+
+        main((fix, calc, passOrNot)=>{
+            fix(false)
+            calc(false)
+            passOrNot(6)
+        })
+    </script>
 </body>
 </html>
 

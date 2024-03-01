@@ -33,7 +33,7 @@
                 </p>
             </div>
             <div class="right">
-                <p class="header__student"> Student Name </p>
+                <p class="header__student"> Teacher Name </p>
             </div>
         </header>
 
@@ -57,9 +57,9 @@
                     <tbody>
                         <tr class="tbody__tr">
                             <td class="tbody__td tbody__student"> Lucas </td>
-                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6"> </td>
-                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6"> </td>
-                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6"> </td>
+                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6.5"> </td>
+                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6.5"> </td>
+                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6.5"> </td>
                             <td class="tbody__td tbody__grade-point"></td>
                         </tr>
                     </tbody>
@@ -72,7 +72,15 @@
     </div>
 
     <script src="/js/createBackButton.js"></script>
-    <script src="/js/grade/main.js" type='module'></script>
+    <script type='module'>
+        import { main } from '/js/grade/main.js'
+
+        main((fix, calc, passOrNot)=>{
+            fix(true)
+            calc(true)
+            passOrNot(6)
+        })
+    </script>
 </body>
 </html>
 
