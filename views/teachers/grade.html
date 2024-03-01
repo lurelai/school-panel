@@ -28,36 +28,47 @@
                 </span>
 
                 <p class="header__locale"> 
-                    <a href="/student/home" class="header__link">home</a> 
-                    <a href="/student/grade" class="header__link">grade</a> 
+                    <a href="/teacher/home" class="header__link">home</a> 
+                    <a href="/teacher/grade" class="header__link">grade</a> 
                 </p>
             </div>
             <div class="right">
                 <p class="header__student"> Student Name </p>
             </div>
         </header>
-        <main class="main">
-            <table class="main__table">
-                <thead class="table__thead">
-                    <tr class="thead__tr">
-                        <th class="thead__th thead__student"> Students </th>
-                        <th class="thead__th thead__unit"> 1° Unit </th>
-                        <th class="thead__th thead__unit"> 2° Unit </th>
-                        <th class="thead__th thead__unit"> 3° Unit </th>
-                        <th class="thead__th thead__grade-point"> Grade point </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="tbody__tr">
-                        <td class="tbody__td tbody__student"> Lucas </td>
-                        <td class="tbody__td tbody__unit"> 6 </td>
-                        <td class="tbody__td tbody__unit"> 6 </td>
-                        <td class="tbody__td tbody__unit"> 6 </td>
-                        <td class="tbody__td tbody__grade-point"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </main>
+
+        <form action="">
+            <main class="main">
+                <table class="main__table">
+                    <caption class="table__title"> 
+                        <span class="title__span title__school-year"> 1st year<span style="color: #a020f0;">(high)</span></span>
+                        <span class="title__span title__class">Class A</span>
+                        <span class="title__span title__subject">Math</span>
+                    </caption>
+                    <thead class="table__thead">
+                        <tr class="thead__tr">
+                            <th class="thead__th thead__student"> Students </th>
+                            <th class="thead__th thead__unit"> 1° Unit </th>
+                            <th class="thead__th thead__unit"> 2° Unit </th>
+                            <th class="thead__th thead__unit"> 3° Unit </th>
+                            <th class="thead__th thead__grade-point"> Grade point </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tbody__tr">
+                            <td class="tbody__td tbody__student"> Lucas </td>
+                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6"> </td>
+                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6"> </td>
+                            <td class="tbody__td tbody__unit"> <input class="tbody__input" type="number" value="6"> </td>
+                            <td class="tbody__td tbody__grade-point"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="submit-wrapper">
+                    <input type="submit" class="submit">
+                </div>
+            </main>
+        </form>
     </div>
 
     <script src="/js/createBackButton.js"></script>
