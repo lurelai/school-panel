@@ -59,6 +59,11 @@
 }
 
 .year__subject::after{
-    content: '';z
+    content: '';
+}
+
+.year__link{
+    text-decoration: none;
+    color: black;
 }
 
