@@ -37,6 +37,6 @@ export const calcGradePoint = (isInput)=>{
             }
         }
 
-        currentGradePoint.innerText = (rowInfo.gradePoint / rowInfo.unitsWithPoint).toFixed(2).replace('.', ',')
+        currentGradePoint.innerText = (rowInfo.gradePoint / rowInfo.unitsWithPoint).toFixed(1).replace('.', ',')
     }
 }

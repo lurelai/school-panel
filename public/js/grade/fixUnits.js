@@ -12,14 +12,14 @@ export const fixUnits = (isInput)=>{
             if(!unit.innerText)
                 continue
 
-            unit.innerText = Number(unit.innerText).toFixed(2).replace('.', ',')
+            unit.innerText = Number(unit.innerText).toFixed(1).replace('.', ',')
             continue
         }
 
         if(!unit.value)
             continue
 
-        unit.value = Number(unit.value).toFixed(2)
+        unit.value = Number(unit.value).toFixed(1)
     }
 }
 

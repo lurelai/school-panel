@@ -1,14 +1,8 @@
-/* BLOCK */
 .main{
     margin-top: 26px;
 
     max-width: 100vw;
     min-height: calc(100vh - 15.7vh - 26px)
-}
-
-.main__table, .tbody__td, .tbody__th{
-    font-size: 20px;
-    text-align: center;
 }
 
 .main__table{
@@ -17,21 +11,14 @@
     font-size: 20px;
 }
 
-.submit-wrapper{
-    display: flex;
 
-    justify-content: right;
-
-    margin-top: 30px;
-    padding-right: 150px;
+/* GERAL */
+.main__table, .tbody__td, .tbody__th{
+    font-size: 20px;
+    text-align: center;
 }
 
-
-/* ELEMENTS */
-.thead__th{
-    font-weight: bold;
-}
-
+/* CAPTION */
 .title__span::after{
     content: ' -';
 }
@@ -47,13 +34,48 @@
     margin-bottom: 16px;
 }
 
+.thead__student, .tbody__student{
+    text-align: left;
+
+    padding-left: 10px;
+}
+
+
+/* Thead */
+.thead__th{
+    font-weight: bold;
+}
+
+.thead__student{
+    width: 625px;
+}
+
+.thead__grade-point{
+    max-width: 150px;
+}
+
+
+/* Tbody */
 .tbody__input{
-    width: 60px;
+    width: 70px;
 
     font-size: 20px;
 
     text-align: center;
     border: 0 none;
+
+    padding-left: 10px;
+}
+
+
+/* FORM */
+.submit-wrapper{
+    display: flex;
+
+    justify-content: right;
+
+    margin-top: 82px;
+    padding-right: 60px;
 }
 
 .submit{
