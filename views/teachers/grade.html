@@ -74,11 +74,14 @@
     <script src="/js/createBackButton.js"></script>
     <script type='module'>
         import { main } from '/js/grade/main.js'
+        import { seeChanges } from '/js/grade/seeChanges.js'
 
-        main((fix, calc, passOrNot)=>{
+        main(({ fix, calc, passOrNot, see })=>{
             fix(true)
             calc(true)
             passOrNot(6)
+
+            see([[fix, true], [calc, true], [passOrNot, 6]]) // type: [ [function, param] ]
         })
     </script>
 </body>
