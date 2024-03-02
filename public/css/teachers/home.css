@@ -36,34 +36,17 @@
 
     font-size: 18px;
 
-
     letter-spacing: 2px;
 }
 
-.year__li:hover{
-    background: #D5094D;
-
-    color: white;
-}
+.year__li:hover{ background: #D5094D; color: white; }
 
 /* ELEMENTS */
-.year__paragraph{
-    font-size: 24px;
-    font-weight: bold;
-}
+.year__paragraph{ font-size: 24px; font-weight: bold; }
 
-.year__span::after{
-    content: ' -';
+.year__span::after{ content: ' -'; font-weight: bold; }
 
-    font-weight: bold;
-}
+.year__subject::after{ content: ''; }
 
-.year__subject::after{
-    content: '';
-}
-
-.year__link{
-    text-decoration: none;
-    color: black;
-}
+.year__link{ text-decoration: none; color: black; }
 

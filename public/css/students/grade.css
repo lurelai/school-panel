@@ -5,37 +5,18 @@
     margin-top: 20px;
 }
 
-.main__table{
-    width: 100%;
-}
-
+.main__table{ width: 100%; }
 /* Geral */
-.main__table, .tbody__td, .thead__th{
-    font-size: 20px;
+.main__table, .tbody__td, .thead__th{ font-size: 20px; text-align: center; }
 
-    text-align: center;
-}
+.thead__th, .tbody__td{ padding: 8px; }
 
-.thead__th, .tbody__td{
-    padding: 8px;
-}
+.thead__th, .tbody__subject{ font-weight: bold; }
 
-.thead__th, .tbody__subject{
-    font-weight: bold;
-}
-
-.tbody__teacher, .thead__teacher{
-    text-align: left;
-
-    padding-left: 60px;
-}
+.tbody__teacher, .thead__teacher{ text-align: left; padding-left: 60px; }
 
 /* Thead */
-.thead__subject{
-    width: 250px;
-}
+.thead__subject{ width: 250px; }
 
-.thead__unit, .thead__grade-point{
-    width: 150px;
-}
+.thead__unit, .thead__grade-point{ width: 150px; }
 

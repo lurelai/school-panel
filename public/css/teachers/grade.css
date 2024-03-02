@@ -5,27 +5,16 @@
     min-height: calc(100vh - 15.7vh - 26px)
 }
 
-.main__table{
-    width: 100%;
-
-    font-size: 20px;
-}
+.main__table{ width: 100%; font-size: 20px; }
 
 
 /* GERAL */
-.main__table, .tbody__td, .tbody__th{
-    font-size: 20px;
-    text-align: center;
-}
+.main__table, .tbody__td, .tbody__th{ font-size: 20px; text-align: center; }
 
 /* CAPTION */
-.title__span::after{
-    content: ' -';
-}
+.title__span::after{ content: ' -'; }
 
-.title__subject::after{
-    content: '';
-}
+.title__subject::after{ content: ''; }
 
 .table__title{
     font-size: 24px;
@@ -34,25 +23,15 @@
     margin-bottom: 16px;
 }
 
-.thead__student, .tbody__student{
-    text-align: left;
-
-    padding-left: 10px;
-}
+.thead__student, .tbody__student{ text-align: left; padding-left: 10px; }
 
 
 /* Thead */
-.thead__th{
-    font-weight: bold;
-}
+.thead__th{ font-weight: bold; }
 
-.thead__student{
-    width: 625px;
-}
+.thead__student{ width: 625px; }
 
-.thead__grade-point{
-    max-width: 150px;
-}
+.thead__grade-point{ max-width: 150px; }
 
 
 /* Tbody */
@@ -63,8 +42,6 @@
 
     text-align: center;
     border: 0 none;
-
-    padding-left: 10px;
 }
 
 
@@ -90,3 +67,8 @@
     font-weight: bold;
 }
 
+
+
+/* Remove up and down arrows in input with type number*/
+.tbody__input::-webkit-outer-spin-button, .tbody__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.tbody__input { -moz-appearance: textfield; }
