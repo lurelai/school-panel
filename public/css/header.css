@@ -10,40 +10,24 @@
     background-color: #1B1B1B;
 }
 
-.header__link{
-    color: white;
+    .header__link{
+        color: white;
 
-    text-transform: none;
-    letter-spacing: 3px;
+        text-transform: none;
+        letter-spacing: 3px;
 
-    text-decoration: none;
+        text-decoration: none;
 
-    font-size: 18px;
-}
+        font-size: 18px;
+    }
 
-.header__link:hover{
-    text-decoration: underline; 
-}
+    .header__link:hover{ text-decoration: underline; }
 
-.header__link::before{
-    content: '/';
-}
+    .header__link::before{ content: '/'; }
 
-.header__student{
-    font-size: 22px;
+    .header__student{ font-size: 22px; color: white; text-transform: capitalize; }
 
-    color: white;
-
-    text-transform: capitalize;
-}
-
-.left{
-    display: flex;
-    gap: 0 10px;
-}
-
-.back-button{
-}
+    .left{ display: flex; gap: 0 10px; }
 
 .back-link{
     text-decoration: none;
