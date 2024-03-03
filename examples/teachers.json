@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Teacher Name",
+
+        "years": {
+            "2024": {
+                "school-year": {
+                    "1st high": [ 
+                        {
+                            "class": "B",
+                            "subject": "Math",
+                            "status": "continuos"
+                        },
+                        {
+                            "class": "A",
+                            "subject": "Math with phisyc",
+                            "status": "continuos"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+]
+
