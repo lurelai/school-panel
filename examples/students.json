@@ -1,0 +1,17 @@
+[
+    {
+        "name": "My Name Is COOOL",
+
+        "years": {
+            "2024": {
+                "class": "A",
+                "gradePoint": {
+                    "math": [0, 1, 2],
+                    "phisic": [0, 1, 2]
+                }
+            }
+        }
+
+    }
+]
+
