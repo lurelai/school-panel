@@ -4,20 +4,44 @@
 
         "years": {
             "2024": {
-                "school-year": {
-                    "1st high": [ 
-                        {
-                            "class": "B",
-                            "subject": "Math",
-                            "status": "continuos"
-                        },
-                        {
-                            "class": "A",
-                            "subject": "Math with phisyc",
-                            "status": "continuos"
-                        }
-                    ]
-                }
+                "1st high": [
+                    {
+                        "class": "B",
+                        "subject": "math",
+                        "status": "continuos"
+                    },
+                    {
+                        "class": "A",
+                        "subject": "math",
+                        "status": "continuos"
+                    }
+                ],
+
+                "2nd high": [
+                    {
+                        "class": "H",
+                        "subject": "Phisic",
+                        "status": "Continuos"
+                    }
+                ]
+            },
+
+            "2023": {
+              "2nd high": [
+                  {
+                      "class": "A",
+                      "subject": "math",
+                      "status": "finish"
+                  }
+              ],
+
+              "5th elementary": [
+                  {
+                      "class": "D",
+                      "subject": "math",
+                      "status": "finish"
+                  }
+              ]
             }
         }
     }
