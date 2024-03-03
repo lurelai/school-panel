@@ -1,0 +1,56 @@
+/* BLOCK */
+.main{ margin-top: 30px; max-width: 100vw; min-height: calc(100vh - 15.7vh - 30px); }
+
+.main__ul{
+    max-width: 100vw;
+    min-height: calc(100vh - 15.7vh - 30px);
+
+    padding: 0 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px 0;
+}
+
+.year__ul{
+    padding-left: 40px;
+
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+}
+
+.school-year__ul{
+    padding-left: 40px;
+
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+}
+
+.school-year__li{
+    width: 60vw;
+    padding: 7px 12px;
+
+    border: 2px solid #D5094D;
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+}
+
+.school-year__li:hover{ background: #D5094D; color: white; }
+
+/* ELEMENTS */
+.year__paragraph{ font-size: 24px; font-weight: bold; }
+
+.school-year__span::after{ font-weight: bold; }
+
+.school-year__link{ text-decoration: none; color: black; }
+
+.school-year__paragraph{ font-size: 20px; }
+
