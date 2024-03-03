@@ -1,5 +1,3 @@
-// I am withou internet connection now, so, i'm not able to put a correctaly "back-button" now
-
 const createButton = ()=>{
     const links = document.querySelectorAll(".header__link")
     const backLink = document.querySelector(".back-link")
