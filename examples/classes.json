@@ -1,0 +1,18 @@
+"years": [
+    {
+        "currentYear": "2024",
+
+        "schoolYears": {
+            "1st high": {
+                "A": ["Math", "Physic"],
+                "B": ["Math", "Quimicy"]
+            },
+
+            "2nd high": {
+                "A": ["Math", "Physic"],
+                "B": ["Math", "Quimicy"]
+            }
+        }
+    }
+]
+
