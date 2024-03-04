@@ -22,11 +22,20 @@
 
     padding: 9px 20px;
 
-    background-color: #691285;
     text-decoration: none;
+
+    font-weight: bold;
 
     color: white;
     border-radius: 5px;
+}
+
+.main-header__edit{
+    background-color: #ED6F1E;
+}
+
+.main-header__new{
+    background-color: #691285;
 }
 
 .main-header__link:hover{
