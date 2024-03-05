@@ -50,7 +50,7 @@
                     <table class="main__table">
                         <thead class="table__thead">
                             <tr class="thead__tr">
-                                <th class="thead__th thead__student"> Students </th>
+                                <th class="thead__th thead__student"> Student </th>
                                 <th class="thead__th thead__unit"> 1° Unit </th>
                                 <th class="thead__th thead__unit"> 2° Unit </th>
                                 <th class="thead__th thead__unit"> 3° Unit </th>
@@ -59,7 +59,7 @@
                         </thead>
                         <tbody>
                             <tr class="tbody__tr">
-                                <td class="tbody__td tbody__student"> Lucas </td>
+                                <td class="tbody__td tbody__student"><a href="" class="student-section__link">Lucas</a></td>
                                 <td class="tbody__td tbody__unit"> 6.5 </td>
                                 <td class="tbody__td tbody__unit"> 6.5 </td>
                                 <td class="tbody__td tbody__unit"> 6.5 </td>
@@ -68,11 +68,43 @@
                         </tbody>
                     </table>
                 </section>
+
+                <section class="main__section section__student">
+                    <header class="section__header">
+                        <h3>Subject</h3>
+                        <button class="section__change">Change</button>
+                    </header>
+                    <table class="subject-table">
+                        <thead class="subject-table__thead">
+                            <tr class="subject-table__tr">
+                                <th class="subject-table__th">Subject</th>
+                                <th class="subject-table__th">Current teacher</th>
+                                <th class="subject-table__th">Others teachers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="subject-table__tbody">
+                                <th class="subject-table__td"> Math </th>
+                                <th class="subject-table__td"> Jilson Mortha Marmiru </th>
+                                <th class="subject-table__td"> <span class="other-teacher">Jld jfdskl fdsj</span> <span class="other-teacher">spoha fndsk</span></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
             </div>
         </main>
     </div>
 
+    <script src="/js/createBackButton.js"></script>
+    <script type="module">
+        import { main } from '/js/grade/main.js'
 
+        main(({fix, calc, passOrNot})=>{
+            fix(false)
+            calc(false)
+            passOrNot(6)
+        })
+    </script>
 </body>
 </html>
 
