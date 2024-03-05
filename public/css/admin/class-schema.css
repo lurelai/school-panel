@@ -16,7 +16,7 @@
 
 /*TD*/
 .subject-table__td__others-teachers{ display: block; }
-.subject-table__td{ font-size: 18px; }
+.subject-table__td{ font-size: 18px; padding-top: 4px; padding-bottom: 4px; }
 
 .tbody__tr:hover .tbody__student{ background-color: rgb(0,0,0,0); }
 .tbody__tr:hover, .subject-table__tbody__tr:hover{ background: rgb(128, 128, 128, 0.3); }
