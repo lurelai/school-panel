@@ -2,7 +2,6 @@
     margin-top: 26px;
 
     max-width: 100vw;
-    min-height: calc(100vh - 15.7vh - 26px)
 }
 
 .main__table{ width: 100%; font-size: 20px; }
