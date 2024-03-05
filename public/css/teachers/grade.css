@@ -1,59 +1,26 @@
-.main{
-    margin-top: 26px;
-
-    max-width: 100vw;
-}
-
-.main__table{ width: 100%; font-size: 20px; }
-
+.main{ margin-top: 26px; max-width: 100vw; }
+.main__table{ width: 100%; }
 
 /* GERAL */
 .main__table, .tbody__td, .tbody__th{ font-size: 20px; text-align: center; }
 
 /* CAPTION */
 .title__span::after{ content: ' -'; }
-
 .title__subject::after{ content: ''; }
-
-.table__title{
-    font-size: 24px;
-
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-}
-
+.table__title{ font-size: 24px; letter-spacing: 2px; margin-bottom: 16px; }
 .thead__student, .tbody__student{ text-align: left; padding-left: 10px; }
-
 
 /* Thead */
 .thead__th{ font-weight: bold; }
-
 .thead__student{ width: 625px; }
-
 .thead__grade-point{ max-width: 150px; }
 
-
 /* Tbody */
-.tbody__input{
-    width: 70px;
-
-    font-size: 20px;
-
-    text-align: center;
-    border: 0 none;
-}
-
+.tbody__input{ width: 70px; font-size: 18px; text-align: center; border: 0 none; }
+.tbody__td{ font-size: 18px; }
 
 /* FORM */
-.submit-wrapper{
-    display: flex;
-
-    justify-content: right;
-
-    margin-top: 82px;
-    padding-right: 60px;
-}
-
+.submit-wrapper{ display: flex; justify-content: right; margin-top: 82px; padding-right: 60px; }
 .submit{
     border: 2px solid green;
     padding: 3px 25px;
@@ -66,6 +33,7 @@
     font-weight: bold;
 }
 
+.submit:hover{ background-color: green; color: white; }
 
 
 /* Remove up and down arrows in input with type number*/

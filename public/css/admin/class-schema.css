@@ -1,33 +1,30 @@
-.main{
-    margin-top: 15.7px;
+.main{ margin-top: 15.7px; width: 100%; }
+.section__header{ display: flex; align-items: center; height: 50px; padding: 0 5px; }
+.section__header__title{ font-size: 22px; font-weight: bold; letter-spacing: 3px; }
+.sections-wrapper{ display: flex; flex-direction: column; gap: 50px; }
 
-    width: 100%;
-}
+/*TABLE*/
+/*GERAL*/
+.subject-table{ width: 100%; font-size: 20px; }
+.subject-table, .subject-table__td, .subject-table__th{ font-size: 20px; text-align: center; }
+.subject-table__td, .subject-table__th{ padding-left: 10px; vertical-align: top; }
+.subject-table__th__subject, .subject-table__td__subject{ text-align: left; }
+.subject-table__td__subject, .subject-table__th{ font-weight: bold; }
 
-.section__header{
-    display: flex;
-    align-items: center;
+/*TH*/
+.subject-table__th__subject{ width: 150px; }
 
-    height: 50px;
-
-    padding: 0 5px;
-}
-
-.section__header__title{
-    font-size: 22px;
-    font-weight: bold;
-
-    letter-spacing: 3px;
-}
+/*TD*/
+.subject-table__td__others-teachers{ display: block; }
+.subject-table__td{ font-size: 18px; }
 
 
-/*elements*/
+/*others*/
 .section__change{
     width: 25px;
     height: 25px;
 
     margin-left: 14px;
-
     background-color: #fff;
 
     border: 0 none;
@@ -37,4 +34,6 @@
 
     cursor: pointer;
 }
+
+.section__change:hover{ border: 2px solid transparent; }
 
