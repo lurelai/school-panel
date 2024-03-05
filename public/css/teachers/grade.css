@@ -2,7 +2,7 @@
 .main__table{ width: 100%; }
 
 /* GERAL */
-.main__table, .tbody__td, .tbody__th{ font-size: 20px; text-align: center; }
+.main__table, .tbody__td, .tbody__th{ font-size: 20px; text-align: center; border-collapse: collapse; }
 
 /* CAPTION */
 .title__span::after{ content: ' -'; }
@@ -18,21 +18,11 @@
 /* Tbody */
 .tbody__input{ width: 70px; font-size: 18px; text-align: center; border: 0 none; }
 .tbody__td{ font-size: 18px; }
+.tbody__tr:hover .tbody__student{ background-color: rgb(128, 128, 128, 0.3); }
 
 /* FORM */
 .submit-wrapper{ display: flex; justify-content: right; margin-top: 82px; padding-right: 60px; }
-.submit{
-    border: 2px solid green;
-    padding: 3px 25px;
-
-    background: white;
-
-    cursor: pointer;
-
-    font-size: 18px;
-    font-weight: bold;
-}
-
+.submit{ border: 2px solid green; padding: 3px 25px; background: white; cursor: pointer; font-size: 18px; font-weight: bold; }
 .submit:hover{ background-color: green; color: white; }
 
 
