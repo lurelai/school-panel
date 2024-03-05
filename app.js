@@ -38,5 +38,9 @@ app.get('/admin/home/school-year-list/classes-list', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/admin/classes-list.html'))
 })
 
+app.get('/admin/home/school-year-list/classes-list/class-schema', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'views/admin/class-schema.html'))
+})
+
 app.listen(8080, ()=>{ console.log(" Connected ") })
 

@@ -7,21 +7,18 @@
                 "1st high": [
                     {
                         "class": "B",
-                        "subject": ["math", "math tarara"],
-                        "status": "continuos"
+                        "subjects": ["math", "math tarara"]
                     },
                     {
                         "class": "A",
-                        "subject": ["math", "math tarara"],
-                        "status": "continuos"
+                        "subjects": ["math", "math tarara"]
                     }
                 ],
 
                 "2nd high": [
                     {
                         "class": "H",
-                        "subject": ["Phisic"],
-                        "status": "Continuos"
+                        "subjects": ["Phisic"]
                     }
                 ]
             },
@@ -30,16 +27,14 @@
               "2nd high": [
                   {
                       "class": "A",
-                      "subject": ["math"],
-                      "status": "finish"
+                      "subjects": ["math"]
                   }
               ],
 
               "5th elementary": [
                   {
                       "class": "D",
-                      "subject": ["math"],
-                      "status": "finish"
+                      "subjects": ["math"]
                   }
               ]
             }

@@ -4,13 +4,20 @@
 
         "schoolYears": {
             "1st high": {
-                "A": ["Math", "Physic"],
-                "B": ["Math", "Quimicy"]
-            },
+                "A": {
+                    "students": ["studentID", "studentID", "studentID", "studentID", "studentID"],
 
-            "2nd high": {
-                "A": ["Math", "Physic"],
-                "B": ["Math", "Quimicy"]
+                    "subjects":{
+                        "math": {
+                            "lastTeachers": [],
+                            "currentTeacher": "teacherID"
+                        },
+                        "history": {
+                            "lastTeachers": ["tarara"],
+                            "currentTeacher": "teacherID"
+                        }
+                    }
+                }
             }
         }
     }
