@@ -1,17 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const path = require('path')
+// controllers
+const { home, grade } = require('../controllers/studentController')
 
-router.get('/home', (req, res)=>{
-    return res.sendFile(path.join(__dirname, '../../views/students/home.html'))
-})
-
-router.get('/grade', (req, res)=>{
-    return res.sendFile(path.join(__dirname, '../../views/students/grade.html'))
-})
-
-router.get('/')
+router.get('/home', home)
+router.get('/home/:grade', grade)
 
 module.exports = app=>app.use('/student', router)
 
