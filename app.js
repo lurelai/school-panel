@@ -14,14 +14,7 @@ app.get('/', (req, res)=>{ res.sendFile(path.join(__dirname, 'views/index.html')
 
 // Students routes
 require('./src/routes/studentRoute')(app)
-
-app.get('/teacher/home', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'views/teachers/home.html'))
-})
-
-app.get('/teacher/grade', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'views/teachers/grade.html'))
-})
+require('./src/routes/teacherRoute')(app)
 
 app.get('/admin/home', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/admin/home.html'))
