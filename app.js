@@ -10,13 +10,8 @@ app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/index.html'))
 })
 
-app.get('/student/home', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'views/students/home.html'))
-})
-
-app.get('/student/grade', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'views/students/grade.html'))
-})
+// Students routes
+require('./src/routes/studentRoute')(app)
 
 app.get('/teacher/home', (req, res)=>{
     res.sendFile(path.join(__dirname, 'views/teachers/home.html'))
