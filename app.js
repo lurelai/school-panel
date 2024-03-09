@@ -3,10 +3,8 @@ const path = require('path')
 
 const app = express()
 
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
 
 app.use('/css', express.static(path.join(__dirname, '/public/css')))
 app.use('/js', express.static(path.join(__dirname, '/public/js')))
@@ -25,5 +23,5 @@ require('./src/routes/teacherRoute')(app)
 require('./src/routes/adminRoute')(app)
 
 
-app.listen(8080, ()=>{console.log("Connected")})
+app.listen(8080, ()=>{console.log("Server running")})
 

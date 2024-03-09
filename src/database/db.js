@@ -12,11 +12,10 @@ const pool = new Pool({
 })
 
 const createConnection = async ()=>{
-    console.log("Tring to connect with database")
+    console.log("Tring to connect with database...")
     try{
         const client = await pool.connect()
         console.log("Connected")
-
         return;
     }catch(err){ throw err; }
 }
