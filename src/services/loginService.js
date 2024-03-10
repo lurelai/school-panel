@@ -1,14 +1,15 @@
 const { query } = require('../database/db.js')
 
-const adminValidation = (admin, password)=>{
+const adminValidation = (admin, pass)=>{
     return new Promise(async (resolve, reject)=>{
-        const result = await query("SELECT * FROM admin WHERE a_usr=$1 AND password=$2", [admin, password])
-        const resultRows = result.rows
+        const { rowCount } = await 
+            query(`SELECT name FROM admin 
+                WHERE name=$1 AND password=$2`, [admin, pass])
 
-        if(resultRows.length === 0)
-            return resolve({ ok: null, err: "Permission Denied! invalid credentials" })
+        if(rowCount === 0)
+            return resolve({ ok: null, err: "Permission Denied! Invalid credentials" })
 
-        if(resultRows.length > 1)
+        if(rowCount > 1)
             return resolve({ ok: null, err: "There's something wrong with the database, call a programmer to see it"})
 
         return resolve({ ok: 'ok', err: null })
@@ -17,18 +18,35 @@ const adminValidation = (admin, password)=>{
 
 const studentValidation = (id, pass)=>{
     return new Promise(async (resolve, reject)=>{
-        const result = await query("SELECT * FROM students WHERE id=$1 AND password=$2", [id, pass])
-        const resultRow = result.rows
+        const { rowCount } = await 
+            query(`SELECT student_ID FROM students 
+                WHERE student_ID=$1 AND student_password=$2`, [id, pass])
 
-        if(resultRow.length === 0)
-            return resolve({ok: null, err: "Invalid credentials"})
+        if(rowCount === 0)
+            return resolve({ok: null, err: "Permission Denied! Invalid credentials"})
 
-        if(resultRow.length > 1)
-            return resovle({ok: null, err: "There's something wrong with you student account, contact your school to more info"})
+        if(rowCount > 1)
+            return resovle({ok: null, err: "There's something wrong with your student account, contact your school for more info"})
 
         resolve({ok: 'ok', err: null})
     })
 }
 
-module.exports = { adminValidation, studentValidation }
+const teacherValidation = (id, pass)=>{
+    return new Promise(async (resolve, reject)=>{
+        const { rowCount } = await 
+        query(`SELECT * FROM teachers 
+            WHERE teacher_ID=$1 AND teacher_password=$2`, [id, pass])
+
+        if(rowCount === 0)
+            return resolve({ok: null, err: 'Permission Denied! Invalid credentials'})
+
+        if(rowCount > 1)
+            return resolve({ok: null, err: "There's something wrong with your account, contact the school for more help"})
+
+        resolve({ok: 'ok', err: null})
+    })
+}
+
+module.exports = { adminValidation, studentValidation, teacherValidation }
 

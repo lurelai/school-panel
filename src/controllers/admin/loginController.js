@@ -1,15 +1,15 @@
 const { adminValidation } = require('../../services/loginService')
 
 const loginController = async (req, res)=>{
-    const { admin, password } = req.body
+    const { name, password } = req.body
 
-    if(!admin)
-        return res.send({msg: "You can't send request without the admin's field"})
+    if(!name)
+        return res.send({msg: "You can't send requests without the name's field"})
 
     if(!password)
-        return res.send({msg: "You can't send request without the password's field"})
+        return res.send({msg: "You can't send requests without the password's field"})
 
-    const result = await adminValidation(admin, password)
+    const result = await adminValidation(name, password)
     console.log(result)
 
     if ( !result.ok )
