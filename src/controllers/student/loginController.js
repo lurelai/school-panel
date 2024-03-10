@@ -1,15 +1,18 @@
 const { studentValidation } = require('../../services/loginService')
 
 const loginController = async (req, res)=>{
-    const { id, pass } = req.body
+    const { studentID, password } = req.body
 
-    if(!id)
-        return res.send("You can't send request without the id field")
+    if(!studentID)
+        return res.send("You can't send request without the studentID field")
 
-    if(!pass)
-        return res.send("You can't send request without the pass field")
+    else if(isNaN(studentID))
+        return res.send("The studentID need to be a number")
 
-    const result = await studentValidation(id, pass)
+    if(!password)
+        return res.send("You can't send request without the password field")
+
+    const result = await studentValidation(studentID, password)
 
     if(!result.ok)
         return res.send(result.err)
