@@ -15,8 +15,21 @@ const adminRegister = (name, pass)=>{
     })
 }
 
-const studentRegister = (name, pass)=>{
+const studentRegister = (name, age, pass)=>{
     return new Promise(async (resolve, reject)=>{
+        try{
+            const result = await query(`INSERT INTO 
+                students(student_name, student_age, student_password) VALUES($1, $2, $3)`, [name, age, pass])
+
+            return resolve({ok: 'ok', err: null})
+
+        }catch(err){
+            if(err.code === '23505')
+                return resolve({ok: null, err: "There's something wrong with this input, please, try again"})
+
+            return resolve({ok: null, err})
+        }
+
         return resolve({ok: 'ok'})
     })
 }

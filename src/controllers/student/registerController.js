@@ -1,7 +1,25 @@
 const { studentRegister } = require('../../services/registerService')
 
-const registerController = (req, res)=>{
-    return res.send('Okay')
+const registerController = async (req, res)=>{
+    const { name, age, password } = req.body
+
+    if(!name)
+        return res.send("You can't send requests without the name field")
+
+    if(!age)
+        return res.send("You can't send requests without the age field")
+    else if(isNaN(age))
+        return res.send("The age field needs to be a number")
+
+    if(!password)
+        return res.send("You can't send requests without the password field")
+
+    const result = await studentRegister(name, age, password)
+
+    if(!result.ok)
+        return res.send(result.err)
+
+    return res.send('User created')
 }
 
 module.exports = registerController

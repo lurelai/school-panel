@@ -10,7 +10,7 @@ router.get('/', home)
 router.get('/:grade', grade)
 
 router.post('/login', loginController)
-router.post('/login', registerController)
+router.post('/register', registerController)
 
 module.exports = app=>app.use('/student', router)
 
