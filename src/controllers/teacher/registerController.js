@@ -1,4 +1,4 @@
-const { studentRegister } = require('../../services/registerService')
+const { teacherRegister } = require('../../services/registerService')
 
 const registerController = async (req, res)=>{
     const { name, age, password } = req.body
@@ -14,12 +14,12 @@ const registerController = async (req, res)=>{
     if(!password)
         return res.send("You can't send requests without the password field")
 
-    const result = await studentRegister(name, age, password)
+    const result = await teacherRegister(name, age, password)
 
     if(!result.ok)
         return res.send(result.err)
 
-    return res.send("Student's account created")
+    return res.send("Teacher's account created")
 }
 
 module.exports = registerController
