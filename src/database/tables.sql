@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS admin(
-    name varchar(50),
+    name varchar(50) UNIQUE,
     password varchar(300)
 );
 
