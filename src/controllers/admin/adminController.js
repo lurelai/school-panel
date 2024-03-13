@@ -44,7 +44,16 @@ const classesList = async (req, res)=>{
     return res.render('admin/classes-list', { classes })
 }
 
-const classSchema = (req, res)=>{
+
+// Class schema
+const classSchema = async (req, res)=>{
+    const { year, schoolYear, classI } = req.params
+
+    if(isNaN(year))
+        return res.send("The year param needs to be number")
+
+    const { result } = await adminRead({year, schoolYear, classI})
+
     return res.sendFile(path.join(__dirname, '../../../views/admin/class-schema.html'))
 }
 

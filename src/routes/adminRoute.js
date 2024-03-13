@@ -7,7 +7,7 @@ const registerController = require('../controllers/admin/registerController')
 router.get('/', home)
 router.get('/Y:year', schoolYearList)
 router.get('/Y:year/SY:schoolYear', classesList)
-router.get('/Y:year/SY:schoolYear/C:class', classSchema)
+router.get('/Y:year/SY:schoolYear/C:classI', classSchema)
 
 router.post('/login', loginController)
 
