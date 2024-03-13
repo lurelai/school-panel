@@ -3,11 +3,21 @@ const path = require('path')
 
 const app = express()
 
+
+// Uses
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+
+// Statics
 app.use('/css', express.static(path.join(__dirname, '/public/css')))
 app.use('/js', express.static(path.join(__dirname, '/public/js')))
+
+
+// Sets
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+
 
 // Db connection
 require('./src/database/db').createConnection()
@@ -15,7 +25,6 @@ require('./src/database/db').createConnection()
 
 // Index route
 app.get('/', (req, res)=>{ 
-    console.log(req.query)
     res.sendFile(path.join(__dirname, 'views/index.html')) 
 })
 
