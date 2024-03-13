@@ -39,9 +39,9 @@
             </header>
 
             <ul class="main__ul">
-                <a href="" class="ul__link"><li class="ul__li"> 2024 </li></a>
-                <a href="" class="ul__link"><li class="ul__li"> 2023 </li></a>
-                <a href="" class="ul__link"><li class="ul__li"> 2022 </li></a>
+                <%for (let i of years){ %>
+                    <a href="/admin/Y<%=i%>" class="ul__link"><li class="ul__li"> <%=i%> </li></a>
+                <% } %>
             </ul>
         </main>
     </div>

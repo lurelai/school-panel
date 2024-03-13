@@ -2,23 +2,24 @@ const path = require('path')
 const { adminRead } = require('../../services/readService')
 
 const home = async (req, res)=>{
-    const result = await adminRead({})
+    const { result } = await adminRead({})
 
-    const years = result.rows.map(e=>{
-        return e['year']
-    })
+    const years = result.map(e=>{ return e['year'] })
 
-    console.log(years)
-
-    return res.send(result)
-    // return res.sendFile(path.join(__dirname, '../../../views/admin/home.html'))
+    return res.render('admin/home', {years})
 }
 
 const schoolYearList = async (req, res)=>{
+    const { year } = req.params
 
-    return res.send(result)
+    const { result } = await adminRead({ year })
 
-    //return res.sendFile(path.join(__dirname, '../../../views/admin/school-year-list.html'))
+    if(result.length === 0)
+        return res.send("This year don't exist")
+
+    const schoolYears = result.map(e=>{ return e['school_years']})
+
+    return res.render('school-year-list', {schoolYears})
 }
 
 const classesList = (req, res)=>{
