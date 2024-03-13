@@ -1,44 +1,41 @@
 [
     {
         "name": "Teacher Name",
+        "year": 2024,
 
-        "years": {
-            "2024": {
-                "1st high": [
-                    {
-                        "class": "B",
-                        "subjects": ["math", "math tarara"]
-                    },
-                    {
-                        "class": "A",
-                        "subjects": ["math", "math tarara"]
-                    }
-                ],
-
-                "2nd high": [
-                    {
-                        "class": "H",
-                        "subjects": ["Phisic"]
-                    }
-                ]
+        "1st high": [
+            {
+                "class": "B",
+                "subjects": ["math", "math tarara"]
             },
-
-            "2023": {
-              "2nd high": [
-                  {
-                      "class": "A",
-                      "subjects": ["math"]
-                  }
-              ],
-
-              "5th elementary": [
-                  {
-                      "class": "D",
-                      "subjects": ["math"]
-                  }
-              ]
+            {
+                "class": "A",
+                "subjects": ["math", "math tarara"]
             }
-        }
+        ],
+
+        "2nd high": [
+            {
+                "class": "H",
+                "subjects": ["Phisic"]
+            }
+        ]
+    },
+
+    "2023": {
+      "2nd high": [
+          {
+              "class": "A",
+              "subjects": ["math"]
+          }
+      ],
+
+      "5th elementary": [
+          {
+              "class": "D",
+              "subjects": ["math"]
+          }
+      ]
     }
 ]
 
