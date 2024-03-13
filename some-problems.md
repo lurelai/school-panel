@@ -2,3 +2,5 @@ Writing it, I had some problems trying to make a "control panel". So, I notice t
 
 I have other problem now, when i was deciding the DB that i will use, i get this erro: `WARNING: MongoDB 5.0+ requires a CPU with AVX support, and your current system does not appear to have that!`, the reason is that my computer is so old, however, there's nothing that i can do about it. So, i will use postgre instead. I had some problems with its syntax, but now everything is okay and i will be able to start the backend process tomorrow... Probably
 
+More one problem, i noticed that i will be not able to integrate everything (the front with the backend). I noticed so much how the front end was working, but, i don't thought how i would integrate the front with the back. I need to go one step back, to do two forward.
+
