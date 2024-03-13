@@ -14,7 +14,10 @@ require('./src/database/db').createConnection()
 
 
 // Index route
-app.get('/', (req, res)=>{ res.sendFile(path.join(__dirname, 'views/index.html')) })
+app.get('/', (req, res)=>{ 
+    console.log(req.query)
+    res.sendFile(path.join(__dirname, 'views/index.html')) 
+})
 
 
 // Routes

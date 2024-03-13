@@ -16,5 +16,6 @@ router.post('/login', loginController)
 router.post('/register', registerController)
 router.get('/read', readController)
 
+
 module.exports = app=>app.use('/admin', router)
 
