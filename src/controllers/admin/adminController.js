@@ -2,7 +2,13 @@ const path = require('path')
 const { adminRead } = require('../../services/readService')
 
 const home = async (req, res)=>{
-    const result = await adminRead({year: 2024})
+    const result = await adminRead({})
+
+    const years = result.rows.map(e=>{
+        return e['year']
+    })
+
+    console.log(years)
 
     return res.send(result)
     // return res.sendFile(path.join(__dirname, '../../../views/admin/home.html'))

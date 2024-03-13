@@ -15,5 +15,10 @@ CREATE TABLE IF NOT EXISTS teachers(
     teacher_name varchar(200) NOT NULL,
     teacher_age float NOT NULL,
     teacher_password varchar(200) UNIQUE NOT NULL
-)
+);
+
+CREATE TABLE IF NOT EXISTS classes(
+    year varchar(20) UNIQUE NOT NULL,
+    school_years json NOT NULL
+);
 
