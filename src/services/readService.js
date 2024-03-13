@@ -11,6 +11,9 @@ const adminRead = (obj)=>{
         if(objectLength === 1)
             result = (await query("SELECT json_object_keys(school_years) AS school_years FROM classes WHERE year=$1", [obj.year])).rows
 
+        if(objectLength === 2)
+            result = (await query("SELECT json_object_keys(school_years -> $1) AS class from classes WHERE year=$2", [obj.schoolYear, obj.year])).rows
+
         return resolve({ok: 'ok', result, err: null})
     })
 }

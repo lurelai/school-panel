@@ -41,8 +41,9 @@
             </header>
 
             <ul class="main__ul">
-                <a href="" class="ul__link"><li class="ul__li"> Class A</li></a>
-                <a href="" class="ul__link"><li class="ul__li"> Class B  </li></a>
+                <% for(let i of classes){ %>
+                    <a href="./C<%=i%>/" class="ul__link"><li class="ul__li">Class <%=i%></li></a>
+                <%}%>
             </ul>
         </main>
     </div>

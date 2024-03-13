@@ -41,7 +41,7 @@
 
             <ul class="main__ul">
                 <% for(let i of schoolYears){ %>
-                    <a href="<%=page + i.join(' ')%>" class="ul__link"><li class="ul__li"> <%=i[0]%> year <span class="ul__type">(<%=i[1]%> school)</span></li></a>
+                    <a href="./SY<%=i.join(' ')%>/" class="ul__link"><li class="ul__li"> <%=i[0]%> year <span class="ul__type">(<%=i[1]%> school)</span></li></a>
                 <% } %>
             </ul>
         </main>
