@@ -11,15 +11,14 @@ const home = async (req, res)=>{
 
 const schoolYearList = async (req, res)=>{
     const { year } = req.params
-
     const { result } = await adminRead({ year })
 
     if(result.length === 0)
         return res.send("This year don't exist")
 
-    const schoolYears = result.map(e=>{ return e['school_years']})
+    const schoolYears = result.map(e=>{return e['school_years'].split(' ')})
 
-    return res.render('school-year-list', {schoolYears})
+    return res.render('admin/school-year-list', { schoolYears, page: req.originalUrl})
 }
 
 const classesList = (req, res)=>{
