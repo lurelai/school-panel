@@ -5,11 +5,14 @@ const router = express.Router()
 const { home, grade } = require('../controllers/student/studentController')
 const loginController = require('../controllers/student/loginController')
 const registerController = require('../controllers/student/registerController')
+const readController = require('../controllers/student/readController')
 
 router.get('/', home)
-router.get('/:grade', grade)
+router.get('/G:grade', grade)
 
 router.post('/login', loginController)
+
+// CRUD
 router.post('/register', registerController)
 
 module.exports = app=>app.use('/student', router)
