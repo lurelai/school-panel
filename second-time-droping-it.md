@@ -1,4 +1,0 @@
-Yes... Sorrily, it's my second time trying to make it work, and, one more time, I notice that it was a shame. *BUT*, it was better than the last one. This time, I failed because I didn't plan it correctly, this is the key. To plan...
-
-I'm so sorry, my future me.
-
