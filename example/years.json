@@ -5,12 +5,14 @@
 			"1st high school": {
 				"A": {
 					"students": ["studentID", "studentID"],
-					"teachers": ["teacherID", "teacherID"]
+					"teachers": ["teacherID", "teacherID"],
+					"subjects": ["subject1", "subject2"]
 				},
 
 				"B": {
 					"students": ["studentID", "studentID"],
-					"teachers": ["teacherID", "teacherID"]
+					"teachers": ["teacherID", "teacherID"],
+					"subjects": ["subject1", "subject2"]
 				}
 			}
 		}
@@ -22,12 +24,14 @@
 			"1st high school": {
 				"A": {
 					"students": ["studentID", "studentID"],
-					"teachers": ["teacherID", "teacherID"]
+					"teachers": ["teacherID", "teacherID"],
+					"subjects": ["subject1", "subject2"]
 				},
 
 				"B": {
 					"students": ["studentID", "studentID"],
-					"teachers": ["teacherID", "teacherID"]
+					"teachers": ["teacherID", "teacherID"],
+					"subjects": ["subject1", "subject2"]
 				}
 			}
 		}
