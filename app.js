@@ -1,24 +1,29 @@
 const express = require('express')
 const app = express()
 
-require('dotenv').config()
+const { createConnection, query } = require('./src/database/db')
 
-const { Pool } = require('pg')
 
-const pool = new Pool({
-	user: process.env.POSTGRES_USER,
-	host: process.env.POSTGRES_HOST,
-	password: process.env.POSTGRES_PASSWORD,
-	port: process.env.POSTGRES_PORT,
-	database: process.env.POSTGRES_DATABASE,
+// LockUp var
+let __LOCK__ = false;
+
+// LockUp function
+app.use((req, res, next)=>{
+	if(__LOCK__)
+		return res.sendStatus(401)
+
+	next()
 })
 
-pool.connect()
 
+// Connection with database
+createConnection().then((resolve)=>{
+	console.log(resolve)
+}).catch(err=>{ __LOCK__ = true })
+
+
+// Root
 app.get('/', async (req, res)=>{
-	const response = await pool.query('SELECT * FROM students;')
-	console.log(response)
-
 	res.send('okay')
 })
 
