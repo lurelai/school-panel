@@ -6,3 +6,8 @@ CREATE TABLE IF NOT EXISTS students(
 	years json
 );
 
+CREATE TABLE IF NOT EXISTS years(
+	year varchar(10) NOT NULL UNIQUE,
+	school_years json
+);
+

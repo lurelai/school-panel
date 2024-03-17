@@ -1,0 +1,36 @@
+[
+	{
+		"year": "2024",
+		"school_years": {
+			"1st high school": {
+				"A": {
+					"students": ["studentID", "studentID"],
+					"teachers": ["teacherID", "teacherID"]
+				},
+
+				"B": {
+					"students": ["studentID", "studentID"],
+					"teachers": ["teacherID", "teacherID"]
+				}
+			}
+		}
+	},
+
+	{
+		"year": "2023",
+		"school_years": {
+			"1st high school": {
+				"A": {
+					"students": ["studentID", "studentID"],
+					"teachers": ["teacherID", "teacherID"]
+				},
+
+				"B": {
+					"students": ["studentID", "studentID"],
+					"teachers": ["teacherID", "teacherID"]
+				}
+			}
+		}
+	}
+]
+
