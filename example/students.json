@@ -1,7 +1,7 @@
 [
     {
         "name": "name",
-        "short-name": "short-name",
+        "short_name": "short-name",
         "age": 15,
         "id": "22000",
         "years": {
