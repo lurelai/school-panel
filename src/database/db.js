@@ -26,7 +26,6 @@ const createConnection = async ()=>{
 		// CREATE TABLES
 		await pool.query( readFileSync(path.join(__dirname, 'create-table.sql'), 'ASCII') )
 
-
 		return { msg: "Connected", connectionTime: end }
 	}catch(err){
 		throw err;
@@ -34,9 +33,11 @@ const createConnection = async ()=>{
 }
 
 const query = async (qr="", param=[])=>{
-	const result = pool.query(qr, param)
+	const start = Date.now()
+	const result = await pool.query(qr, param)
+	const end = Date.now() - start
 
-	return result;
+	return { result, queryTime: end };
 }
 
 module.exports = { createConnection, query }

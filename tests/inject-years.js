@@ -3,8 +3,17 @@
 // I'm using the free api https://randomuser.me/
 
 const { query } = require('../src/database/db')
+const log = {
+	finalStudentIdEntrypoint: null,
+	finalTeacherIdEntrypoint: null,
+	studentsCreated: 0,
+	teachersCreated: 0,
+	totalTimeQueryTeacher: 0,
+	totalTimeQueryStudent: 0,
+	timeQueryFinal: 0
+}
 
-const defaultConfig = {
+const defaultConfigStatic = {
 	year: "2024",
 	schoolYear: ["1st high", "2nd high"],
 	classesNames: ["A", "B", "C"],
@@ -17,7 +26,9 @@ const defaultConfig = {
 	subjects: ["Math", "Physic", "Biology"] // STATIC
 }
 
-const setUpConfigs = ()=>{
+const defaultConfig = Object.assign({}, defaultConfigStatic)
+
+const setUpConfigs = async ()=>{
 	const [,, ...args] = process.argv
 
 	const mapping = {
@@ -47,8 +58,6 @@ const setUpConfigs = ()=>{
 
 		defaultConfig[mapping[flag]] = value
 	}
-
-	console.log(defaultConfig)
 }
 
 const generateFakeNames = async (obj, ind)=>{
@@ -91,6 +100,7 @@ const generateFakeNames = async (obj, ind)=>{
 
 const inject = async (obj, create)=>{
 	const { studentsPerClass: SPC, teachersPerClass: TPC } = obj
+
 	let years = {}
 
 	// set the "years" variable... see /example/years.json
@@ -115,7 +125,10 @@ const inject = async (obj, create)=>{
 						}
 					})
 
-					await query(queryString, [s.name, s.short_name, s.age, s.id, sYears])
+					const { queryTime } = await query(queryString, [s.name, s.short_name, s.age, s.id, sYears])
+
+					log.totalTimeQueryStudent += queryTime
+					log.studentsCreated++
 
 					return s.id 
 				}),
@@ -127,7 +140,10 @@ const inject = async (obj, create)=>{
 					tYears[obj.year] = {}
 					tYears[obj.year][schoolYear] = [[ className, obj.subjects[index], "on going" ]]
 
-					await query(queryString, [t.name, t.short_name, t.age, t.id, tYears])
+					const { queryTime } = await query(queryString, [t.name, t.short_name, t.age, t.id, tYears])
+
+					log.totalTimeQueryTeacher += queryTime
+					log.teachersCreated++
 
 					return t.id 
 				}),
@@ -137,14 +153,29 @@ const inject = async (obj, create)=>{
 		}
 	}
 
-	console.log(years)
+	const { queryTime } = await query("INSERT INTO years(year, school_years) VALUES($1, $2)", [obj.year, years])
+
+	log.timeQueryFinal = queryTime
+	log.finalStudentIdEntrypoint = defaultConfig.idStudentEntryPoint - 1
+	log.finalTeacherIdEntrypoint = defaultConfig.idTeacherEntryPoint - 1
+
+	log.timeQueryFinal = String(log.timeQueryFinal) + ' ms'
+	log.totalTimeQueryTeacher = String(log.totalTimeQueryTeacher) + ' ms'
+	log.totalTimeQueryStudent = String(log.totalTimeQueryStudent) + ' ms'
 }
 
 const init = async ()=>{
-	setUpConfigs()
-	inject(defaultConfig, generateFakeNames)
-}
+	await setUpConfigs()
+	await inject(defaultConfig, generateFakeNames)
 
+	console.log("==========================================================")
+	console.log("DEFAULT CONFIG")
+	console.log(defaultConfigStatic)
+	console.log("==========================================================")
+	console.log("\n==========================================================")
+	console.log("LOG")
+	console.log(log)
+}
 
 init()
 
