@@ -49,6 +49,8 @@
 const { query } = require('../src/database/db')
 
 
+query('select * from students').then(e=>console.log(e)).catch(e=>console.log('error', e))
+
 const defaultConfig = {
 	year: "2024",
 	schoolYear: ["1st high", "2nd high"],
@@ -59,6 +61,7 @@ const defaultConfig = {
 	avarageTeacherYear: 30,
 	idStudentEntryPoint: 0,
 	idTeacherEntryPoint: 0,
+	subjects: ["Math", "Physic", "Biology"] // STATIC
 }
 
 const setUpConfigs = ()=>{
@@ -95,30 +98,12 @@ const setUpConfigs = ()=>{
 	console.log(defaultConfig)
 }
 
-const inject = async (obj)=>{
-	// const infos = await fetch("https://api.namefake.com/")
-	let yearsSchoolYears = {}
-
-	for(let i of obj.schoolYear){
-		yearsSchoolYears[i] = {}
-		for(let j of obj.classesNames){
-			yearsSchoolYears[i][j] = {}
-		}
-	}
-
-	console.log(yearsSchoolYears)
-}
-
-const generateFakeNames = async (obj)=>{
+const generateFakeNames = async (obj, ind)=>{
 	const { avarageStudentsYear: aS, avarageTeacherYear: aT } = obj
 	const students = []
 	const teachers = []
 
-	let ind = obj.classesNames.length * obj.studentsPerClass
-	let result = null
-
-
-	result = await fetch(`https://randomuser.me/api/?results=${ind}&inc=name`).then(res=>{ return res.json() })
+	let result = await fetch(`https://randomuser.me/api/?results=${ind.student}&inc=name`).then(res=>{ return res.json() })
 	
 	for(let i of result.results){
 		const { first, last } = i.name
@@ -131,22 +116,56 @@ const generateFakeNames = async (obj)=>{
 		})
 
 		obj.idStudentEntryPoint++
-		obj.idTeacherEntryPoint++
 	}
 
 	ind = obj.classesNames.length * obj.teachersPerClass
-	result = await fetch(`https://randomuser.me/api/?results=${ind}&inc=name`).then(res=>{ return res.json() })
+	result = await fetch(`https://randomuser.me/api/?results=${ind.teacher}&inc=name`).then(res=>{ return res.json() })
 
 	for(let i of result.results){
 		const { first, last } = i.name
+
+		teachers.push({
+			name: first + ' ' + last,
+			short_name: last,
+			age: (Math.random() * ((aT + 1) - (aS - 1)) + (aS - 1)).toFixed(2),
+			id: obj.idTeacherEntryPoint
+		})
+
+		obj.idTeacherEntryPoint++
 	}
 
+	return { students, teachers }
 }
 
-const init = ()=>{
+const inject = async (obj, create)=>{
+	const { studentsPerClass: SPC, teachersPerClass: TPC } = obj
+	let years = {}
+
+	for(let i of obj.schoolYear){
+		years[i] = {}	
+
+		for(let j of obj.classesNames){
+			const { students, teachers } = await create(obj, {student: SPC, teacher: TPC})
+
+			years[i][j] = {
+				students: students.map(async e=>{ 
+					const queryString = "INSERT INTO students(name, short_name, age, id) VALUES($1, $2, $3, $4)" 
+					//await query(queryString, [e.name, e.short_name, e.age, e.id])
+
+					return e.id 
+				}),
+				teachers: teachers.map(async e=>{ 
+					return e.id 
+				}),
+				subjects: obj.subjects
+			}
+		}
+	}
+}
+
+const init = async ()=>{
 	setUpConfigs()
-	// inject(defaultConfig)
-	generateFakeNames(defaultConfig)
+	inject(defaultConfig, generateFakeNames)
 }
 
 
