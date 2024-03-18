@@ -2,50 +2,6 @@
 
 // I'm using the free api https://randomuser.me/
 
-// EXAMPLE
-// year = 2024
-// schoolYear = ["1st high", "2nd high"]
-// classesNames = ["A", "B", "C"]
-
-//	{
-//		year: 2024,
-//		school_year = {
-//			"1st high": {
-//				"A": {
-//					students: [studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId],(20 times)	
-//					teachers: [teacherId, teacherId, teacherId, teacherId]
-//				},
-//
-//				"B": {
-//					students: [studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId],(20 times)	
-//					teachers: [teacherId, teacherId, teacherId, teacherId]
-//				},
-//
-//				"C": {
-//					students: [studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId],(20 times)	
-//					teachers: [teacherId, teacherId, teacherId, teacherId]
-//				}
-//			},
-//
-//			"2nd high": {
-//				"A": {
-//					students: [studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId],(20 times)	
-//					teachers: [teacherId, teacherId, teacherId, teacherId]
-//				},
-//
-//				"B": {
-//					students: [studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId],(20 times)	
-//					teachers: [teacherId, teacherId, teacherId, teacherId]
-//				},
-//
-//				"C": {
-//					students: [studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId, studentId],(20 times)	
-//					teachers: [teacherId, teacherId, teacherId, teacherId]
-//				}
-//			}
-//		}
-//	}
-
 const { query } = require('../src/database/db')
 
 const defaultConfig = {
@@ -53,7 +9,7 @@ const defaultConfig = {
 	schoolYear: ["1st high", "2nd high"],
 	classesNames: ["A", "B", "C"],
 	studentsPerClass: 20,
-	teachersPerClass: 4,
+	teachersPerClass: 3,
 	avarageStudentsYear: 15,
 	avarageTeacherYear: 30,
 	idStudentEntryPoint: 0,
@@ -149,25 +105,31 @@ const inject = async (obj, create)=>{
 					const queryString = "INSERT INTO students(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
 					const sYears = {}
 
-					sYears[schoolYear] = { "class": className, grade: {} }
+					sYears[obj.year] = {}
+					sYears[obj.year][schoolYear] = { "class": className, grade: {} }
 
 					obj.subjects.forEach(e=>{
-						sYears[schoolYear].grade[e] = {
+						sYears[obj.year][schoolYear].grade[e] = {
 							"first_unity":	Math.floor(Math.random() * 11),
 							"second_unity": Math.floor(Math.random() * 11)
 						}
 					})
 
-					// query(queryString, [s.name, s.short_name, s.age, s.id, sYears])
+					await query(queryString, [s.name, s.short_name, s.age, s.id, sYears])
 
 					return s.id 
 				}),
 
-				teachers: teachers.map(async e=>{ 
+				teachers: teachers.map(async (t, index)=>{ 
 					const queryString = "INSERT INTO teachers(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
+					const tYears = {}
 
+					tYears[obj.year] = {}
+					tYears[obj.year][schoolYear] = [[ className, obj.subjects[index], "on going" ]]
 
-					return e.id 
+					await query(queryString, [t.name, t.short_name, t.age, t.id, tYears])
+
+					return t.id 
 				}),
 
 				subjects: obj.subjects
