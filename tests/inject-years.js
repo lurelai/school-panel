@@ -115,7 +115,6 @@ const generateFakeNames = async (obj, ind)=>{
 		obj.idStudentEntryPoint++
 	}
 
-	ind = obj.classesNames.length * obj.teachersPerClass
 	result = await fetch(`https://randomuser.me/api/?results=${ind.teacher}&inc=name`).then(res=>{ return res.json() })
 
 	for(let i of result.results){
@@ -167,7 +166,6 @@ const inject = async (obj, create)=>{
 				teachers: teachers.map(async e=>{ 
 					const queryString = "INSERT INTO teachers(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
 
-					console.log(teachers, SPC)
 
 					return e.id 
 				}),
