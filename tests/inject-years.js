@@ -48,9 +48,6 @@
 
 const { query } = require('../src/database/db')
 
-
-query('select * from students').then(e=>console.log(e)).catch(e=>console.log('error', e))
-
 const defaultConfig = {
 	year: "2024",
 	schoolYear: ["1st high", "2nd high"],
@@ -141,26 +138,46 @@ const inject = async (obj, create)=>{
 	const { studentsPerClass: SPC, teachersPerClass: TPC } = obj
 	let years = {}
 
-	for(let i of obj.schoolYear){
-		years[i] = {}	
+	// set the "years" variable... see /example/years.json
+	for(let schoolYear of obj.schoolYear){
+		years[schoolYear] = {}	
 
-		for(let j of obj.classesNames){
+		for(let className of obj.classesNames){
 			const { students, teachers } = await create(obj, {student: SPC, teacher: TPC})
 
-			years[i][j] = {
-				students: students.map(async e=>{ 
-					const queryString = "INSERT INTO students(name, short_name, age, id) VALUES($1, $2, $3, $4)" 
-					//await query(queryString, [e.name, e.short_name, e.age, e.id])
+			years[schoolYear][className] = {
+				students: students.map(async s=>{ 
+					const queryString = "INSERT INTO students(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
+					const sYears = {}
+
+					sYears[schoolYear] = { "class": className, grade: {} }
+
+					obj.subjects.forEach(e=>{
+						sYears[schoolYear].grade[e] = {
+							"first_unity":	Math.floor(Math.random() * 11),
+							"second_unity": Math.floor(Math.random() * 11)
+						}
+					})
+
+					// query(queryString, [s.name, s.short_name, s.age, s.id, sYears])
+
+					return s.id 
+				}),
+
+				teachers: teachers.map(async e=>{ 
+					const queryString = "INSERT INTO teachers(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
+
+					console.log(teachers, SPC)
 
 					return e.id 
 				}),
-				teachers: teachers.map(async e=>{ 
-					return e.id 
-				}),
+
 				subjects: obj.subjects
 			}
 		}
 	}
+
+	console.log(years)
 }
 
 const init = async ()=>{
