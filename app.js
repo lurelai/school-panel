@@ -23,7 +23,7 @@ createConnection().then(({msg, connectionTime})=>{
 // PANIC ROUTE
 app.use((req, res, next)=>{
 	if(__LOCK__ === null)
-		return res.send('Wait a minute... We are trying to connect').status(500)
+		return res.send('Wait a minute... We are trying to connect the database').status(500)
 
 	if(__LOCK__)
 		return res.send("There\'s something wrong with the database...").status(500)
