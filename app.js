@@ -32,8 +32,13 @@ app.use((req, res, next)=>{
 })
 
 
+// Able to use json and body-parser
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+
+// Routes
+require('./src/routes/studentRoute')(app)
 
 
 // Root
