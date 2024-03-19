@@ -112,7 +112,7 @@ const inject = async (obj, create)=>{
 
 			years[schoolYear][className] = {
 				students: students.map(async s=>{ 
-					const queryString = "INSERT INTO students(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
+					const queryString = "INSERT INTO students(name, short_name, age, id, years, password) VALUES($1, $2, $3, $4, $5, $6)"
 					const sYears = {}
 
 					sYears[obj.year] = {}
@@ -125,7 +125,7 @@ const inject = async (obj, create)=>{
 						}
 					})
 
-					const { queryTime } = await query(queryString, [s.name, s.short_name, s.age, s.id, sYears])
+					const { queryTime } = await query(queryString, [s.name, s.short_name, s.age, s.id, sYears, 'notreal'])
 
 					log.totalTimeQueryStudent += queryTime
 					log.studentsCreated++
@@ -134,13 +134,13 @@ const inject = async (obj, create)=>{
 				}),
 
 				teachers: teachers.map(async (t, index)=>{ 
-					const queryString = "INSERT INTO teachers(name, short_name, age, id, years) VALUES($1, $2, $3, $4, $5)"
+					const queryString = "INSERT INTO teachers(name, short_name, age, id, years, password) VALUES($1, $2, $3, $4, $5, $6)"
 					const tYears = {}
 
 					tYears[obj.year] = {}
 					tYears[obj.year][schoolYear] = [[ className, obj.subjects[index], "on going" ]]
 
-					const { queryTime } = await query(queryString, [t.name, t.short_name, t.age, t.id, tYears])
+					const { queryTime } = await query(queryString, [t.name, t.short_name, t.age, t.id, tYears, 'notreal'])
 
 					log.totalTimeQueryTeacher += queryTime
 					log.teachersCreated++

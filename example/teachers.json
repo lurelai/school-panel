@@ -4,6 +4,7 @@
         "short_name": "short_name",
         "age": 20,
         "id": "20000",
+        "password": "string",
         "years": {
             "2024": {
                 "1st high": [["A", "Math", "dropped"], ["B", "English", "ongoing"]]

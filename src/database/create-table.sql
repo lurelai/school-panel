@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS students(
 	short_name varchar(50) NOT NULL,
 	age float NOT NULL,
 	ID varchar(100) NOT NULL UNIQUE,
+	PASSWORD varchar(100) NOT NULL,
 	years json
 );
 
@@ -16,6 +17,7 @@ CREATE TABLE IF NOT EXISTS teachers(
 	short_name varchar(50) NOT NULL,
 	age float NOT NULL,
 	ID varchar(100) NOT NULL UNIQUE,
+	PASSWORD varchar(100) NOT NULL,
 	years json
 )
 
