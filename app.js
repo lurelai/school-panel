@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const { createConnection, query } = require('./src/database/db')
+const { createConnection } = require('./src/database/db')
 
 
 // PANIC VAR three possible values {null(default), false, true}
@@ -43,7 +43,13 @@ require('./src/routes/studentRoute')(app)
 
 // Root
 app.get('/', async (req, res)=>{
-	return res.send('okay')
+	return res.send(`
+	<form method="post" action="/student/login">
+		<input type="text" name="id">
+		<input type="text" name="password">
+		<input type="submit">
+	</form>
+	`)
 })
 
 app.listen(4000)

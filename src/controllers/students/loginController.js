@@ -14,6 +14,10 @@ const loginController = async (req, res)=>{
 	if(result.err)
 		return res.send(result.err)
 
+	res.set({
+		'Set-Cookie': `login=${id}&${password}`
+	})
+
 	return res.send('Logged')
 }
 
