@@ -43,9 +43,6 @@ require('./src/routes/studentRoute')(app)
 
 // Root
 app.get('/', async (req, res)=>{
-	console.log(req.body)
-	query("INSERT INTO students(name, short_name, age, id, infos) VALUES($1, $2, $3, $4, $5)", Object.values(req.body))
-
 	return res.send('okay')
 })
 

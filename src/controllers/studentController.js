@@ -9,7 +9,12 @@ const loginController = async (req, res)=>{
 	if(!password)
 		return res.send("You can't take requests without the password field")
 
-	return res.send('Okay')
+	const result = await loginService(id, password)
+
+	if(result.err)
+		return res.send(result.err)
+
+	return res.send('Logged')
 }
 
 module.exports = { loginController }
