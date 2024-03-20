@@ -1,4 +1,4 @@
-const { loginService } = require('../services/studentService')
+const { loginService } = require('../../services/studentService')
 
 const loginController = async (req, res)=>{
 	const { id, password } = req.body
@@ -17,5 +17,5 @@ const loginController = async (req, res)=>{
 	return res.send('Logged')
 }
 
-module.exports = { loginController }
+module.exports = loginController
 
