@@ -9,14 +9,12 @@ const loginController = async (req, res)=>{
 	if(!password)
 		return res.send("You can't take requests without the password field")
 
-	const result = await loginService(id, password)
+	const { err, result } = await loginService(id, password)
 
 	if(result.err)
 		return res.send(result.err)
 
-	res.set({
-		'Set-Cookie': `login=${id}&${password}`
-	})
+	res.set({ 'Set-Cookie': `infos=${JSON.stringify(result)}` })
 
 	return res.send('Logged')
 }
