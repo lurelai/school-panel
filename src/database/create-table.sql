@@ -4,12 +4,12 @@ CREATE TABLE IF NOT EXISTS students(
 	age float NOT NULL,
 	ID varchar(100) NOT NULL UNIQUE,
 	PASSWORD varchar(100) NOT NULL,
-	years json
+	years jsonb
 );
 
 CREATE TABLE IF NOT EXISTS years(
 	year varchar(10) NOT NULL UNIQUE,
-	school_years json
+	school_years jsonb
 );
 
 CREATE TABLE IF NOT EXISTS teachers(
@@ -18,6 +18,6 @@ CREATE TABLE IF NOT EXISTS teachers(
 	age float NOT NULL,
 	ID varchar(100) NOT NULL UNIQUE,
 	PASSWORD varchar(100) NOT NULL,
-	years json
+	years jsonb
 )
 
