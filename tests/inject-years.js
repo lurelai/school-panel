@@ -1,10 +1,10 @@
 "use strict";
 // I am using the free API https://randomuser.me/api/?results=120&inc=name
 
-const log = new Object()
+const { query } = require('../src/database/db')
 
-const doLog = ({ DF })=>{
-	console.log(`\nStudent id entrypoint ${DF['-sie']}\nTeacher id entrypoint ${DF['-tie']}\n`)
+const doLog = (log)=>{
+	console.log(`\nStudent id entrypoint ${log.DF['-sie']}\nTeacher id entrypoint ${log.DF['-tie']}\n`)
 }
 
 const flagMap = {
@@ -36,11 +36,9 @@ const setFlags = ()=>{
 
 
 const generate = async ()=>{
-	const { results } = await fetch('https://randomuser.me/api/?results=120&inc=name').then(e=>{ return e.json() })
+	let { results: studentResult } = await fetch('https://randomuser.me/api/?results=120&inc=name').then(e=>{ return e.json() })
 
-	const students = []
-
-	results.map(({ name: student })=>{
+	studentResult = studentResult.map(({ name: student })=>{
 		const studentObj = {
 			name:			`${student.first} ${student.last}`,
 			short_name:		`${student.last}`,
@@ -57,19 +55,19 @@ const generate = async ()=>{
 			}
 		}
 
-		students.push(studentObj['2024']['grade'])
+		return studentObj
 	})
 
-	console.log(students)
+	return { studentResult }
+}
 
-	return results
+const inject = async ()=>{
 }
 
 
 const init = async ()=>{
 	setFlags()
-
-	await generate()
+	await inject()
 
 	doLog({ DF: defaultConfig })
 }
