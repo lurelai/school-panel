@@ -4,9 +4,10 @@
         "short_name": "short-name",
         "age": 15,
         "id": "22000",
-        "years": {
+        "grade": {
             "2024": {
                 "class": "B",
+                "school-year": "1st year",
                 "grade": {
                     "math": {
                         "first_unity": 0,
@@ -21,6 +22,7 @@
 
             "2023": {
                 "class": "A",
+                "school-year": "1st year",
                 "grade": {
                     "math": {
                         "first_unity": 0,
@@ -32,6 +34,15 @@
                     }
                 }
             }
+        }
+    },
+
+    {
+        "student_info_id": "foregin key",
+        "student_path": {
+            "2024": "B",
+
+            "2023": "A" 
         }
     }
 ]
