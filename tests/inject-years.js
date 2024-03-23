@@ -37,7 +37,26 @@ const setFlags = ()=>{
 
 const generate = async ()=>{
 	let { results: studentsResult } = await fetch('https://randomuser.me/api/?results=120&inc=name').then(e=>{ return e.json() })
-	let { results: teachersResult } = await fetch('https://randomuser.me/api/?results=6&inc=name').then(e=>{ return e.json() })
+	let { results: teachersResult } = await fetch('https://randomuser.me/api/?results=2&inc=name').then(e=>{ return e.json() })
+
+	const yearsObj = {
+		year: defaultConfig['-y'],
+		school_years: {
+			"1st high": {
+				"A": [],
+				"B": [],
+				"C": []
+			},
+
+			"2nd high": {
+				"A": [],
+				"B": [],
+				"C": []
+			}
+		}
+
+	}
+
 
 	studentsResult = studentsResult.map(({ name: student }, index)=>{
 		const generateGrade = (obj)=>{
@@ -90,17 +109,59 @@ const generate = async ()=>{
 		return studentObj
 	})
 
-	return { studentsResult }
+	teachersResult = teachersResult.map(({ name: teacher }, index)=>{
+		const generateYears = (obj)=>{
+			if(index === 0){
+				obj[defaultConfig['-y']] = {
+					"1st high": [["A", "Math", "On going"], ["B", "Math", "On going"], ["C", "Math", "On going"]]
+				}
+
+				return true
+			}
+
+			obj[defaultConfig['-y']] = {
+				"2nd high": [["A", "Math", "On going"], ["B", "Math", "On going"], ["C", "Math", "On going"]]
+			}
+
+			console.log(obj)
+
+			return true
+		}
+
+		const teacherObj = {
+			name: `${teacher.first} ${teacher.last}`,
+			short_name: teacher.last,
+			age: Math.floor(Math.random() * 4) + 30,
+			password: 'noreal',
+			id: flagMap['-tie']++,
+			years: {}
+		}
+
+		generateYears(teacherObj.years)
+
+		return teacherObj
+	})
+
+
+	return { studentsResult, teachersResult }
 }
 
 const inject = async ()=>{
-	const { studentsResult } = await generate()
+	const { studentsResult, teachersResult } = await generate()
 
-	// inserting students
+	// injecting students
 	studentsResult.forEach(async student=>{
 		const queryString = "INSERT INTO students(name, short_name, age, id, password, years) VALUES($1, $2, $3, $4, $5, $6)"
-		await query(queryString, [student.name, student['short_name'], student.age, student.id, 'noreal', student.years])
+		//await query(queryString, [student.name, student['short_name'], student.age, student.id, 'noreal', student.years])
 	})
+
+	// injecting teachers
+	teachersResult.forEach(async teacher=>{
+		const queryString = "INSERT INTO TEACHERS(name, short_name, age, id, password, years) VALUES($1, $2, $3, $4, $5, $6)"
+		//;await query(queryString, [teacher.name, teacher['short_name'], teacher.age, teacher.id, teacher.password, teacher.years])
+	})
+
+
 }
 
 
