@@ -36,9 +36,47 @@ const setFlags = ()=>{
 
 
 const generate = async ()=>{
-	let { results: studentResult } = await fetch('https://randomuser.me/api/?results=120&inc=name').then(e=>{ return e.json() })
+	let { results: studentsResult } = await fetch('https://randomuser.me/api/?results=120&inc=name').then(e=>{ return e.json() })
 
-	studentResult = studentResult.map(({ name: student })=>{
+	studentsResult = studentsResult.map(({ name: student }, index)=>{
+		const generateGrade = (obj)=>{
+			obj[defaultConfig['-y']] = { // { defaultConfig[-y] } = { 2024 } (example)
+				grade: {
+					math: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ],
+					english: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ],
+					biology: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ]
+				}
+			}
+
+			if(index >= 0 && index < 20){
+				obj[defaultConfig['-y']]['1st year'] = 'A'
+				return true
+			}
+
+			if(index < 40){
+				obj[defaultConfig['-y']]['1st year'] = 'B'
+				return true
+			}
+
+			if(index < 60){
+				obj[defaultConfig['-y']]['1st year'] = 'C'
+				return true
+			}
+
+			if(index < 80){
+				obj[defaultConfig['-y']]['2nd year'] = 'A'
+				return true
+			}
+
+			if(index < 100){
+				obj[defaultConfig['-y']]['2nd year'] = 'B'
+				return true
+			}
+
+			obj[defaultConfig['-y']]['2nd year'] = 'C'
+			return true
+		}
+
 		const studentObj = {
 			name:			`${student.first} ${student.last}`,
 			short_name:		`${student.last}`,
@@ -46,22 +84,24 @@ const generate = async ()=>{
 			id:				flagMap['-sie']++,
 		}
 
-		studentObj[defaultConfig['-y']] = {
-			"1st year": "A",
-			grade: {
-				math: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ],
-				english: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ],
-				biology: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ]
-			}
-		}
+		generateGrade(studentObj)
+
+		console.log(studentObj)
 
 		return studentObj
 	})
 
-	return { studentResult }
+	return { studentsResult }
 }
 
 const inject = async ()=>{
+	const { studentsResult } = await generate()
+
+	// inserting students
+	studentsResult.forEach(async student=>{
+		const queryString = "INSERT INTO students(name, short_name, age, id, password, grade) VALUES($1, $2, $3, $4, $5, $6)"
+		await query(queryString, [student.name, student['short_name'], student.age, student.id, 'noreal', student[defaultConfig['-y']]])
+	})
 }
 
 

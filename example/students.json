@@ -4,6 +4,7 @@
         "short_name": "short-name",
         "age": 15,
         "id": "22000",
+        "password": "pass",
         "grade": {
             "2024": {
                 "class": "B",
