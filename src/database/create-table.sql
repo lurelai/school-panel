@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS students(
 	age float NOT NULL,
 	ID varchar(100) NOT NULL UNIQUE,
 	PASSWORD varchar(100) NOT NULL,
-	grade jsonb
+	years jsonb
 );
 
 CREATE TABLE IF NOT EXISTS years(

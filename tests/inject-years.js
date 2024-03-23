@@ -37,10 +37,11 @@ const setFlags = ()=>{
 
 const generate = async ()=>{
 	let { results: studentsResult } = await fetch('https://randomuser.me/api/?results=120&inc=name').then(e=>{ return e.json() })
+	let { results: teachersResult } = await fetch('https://randomuser.me/api/?results=6&inc=name').then(e=>{ return e.json() })
 
 	studentsResult = studentsResult.map(({ name: student }, index)=>{
 		const generateGrade = (obj)=>{
-			obj[defaultConfig['-y']] = { // { defaultConfig[-y] } = { 2024 } (example)
+			obj[defaultConfig['-y']] = { //{ defaultConfig[-y] } = { 2024 } (example)
 				grade: {
 					math: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ],
 					english: [ Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11) ],
@@ -82,12 +83,10 @@ const generate = async ()=>{
 			short_name:		`${student.last}`,
 			age:			Math.floor(Math.random() * 2) + 15,
 			id:				flagMap['-sie']++,
+			years:			{}
 		}
 
-		generateGrade(studentObj)
-
-		console.log(studentObj)
-
+		generateGrade(studentObj.years)
 		return studentObj
 	})
 
@@ -99,8 +98,8 @@ const inject = async ()=>{
 
 	// inserting students
 	studentsResult.forEach(async student=>{
-		const queryString = "INSERT INTO students(name, short_name, age, id, password, grade) VALUES($1, $2, $3, $4, $5, $6)"
-		await query(queryString, [student.name, student['short_name'], student.age, student.id, 'noreal', student[defaultConfig['-y']]])
+		const queryString = "INSERT INTO students(name, short_name, age, id, password, years) VALUES($1, $2, $3, $4, $5, $6)"
+		await query(queryString, [student.name, student['short_name'], student.age, student.id, 'noreal', student.years])
 	})
 }
 
