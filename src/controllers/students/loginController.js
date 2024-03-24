@@ -9,14 +9,18 @@ const loginController = async (req, res)=>{
 	if(!password)
 		return res.send("You can't take requests without the password field")
 
-	const { err, result } = await loginService(id, password)
+	const { results, err } = await loginService(id, password)
 
-	if(result.err)
-		return res.send(result.err)
+	if(err)
+		return res.send(err)
 
-	res.set({ 'Set-Cookie': `infos=${JSON.stringify(result)}` })
+	if(typeof results.studentRoute === "string")
+		res.set({ "Set-Cookie": `route=${results.studentRoute}`})
 
-	return res.send('Logged')
+	else
+		res.set({"Set-Cookie": `route=${JSON.stringify(results.studentRoute)}`});
+
+	return res.send(results)
 }
 
 module.exports = loginController

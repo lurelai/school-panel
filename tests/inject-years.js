@@ -203,6 +203,7 @@ const inject = async ()=>{
 		await query(queryString, [teacher.name, teacher['short_name'], teacher.age, teacher.id, teacher.password, teacher.years])
 	})
 
+	// Inject years
 	await query("INSERT INTO years(year, school_years) VALUES($1, $2)", [yearsResult.year, yearsResult['school_years']])
 
 	return 'Finish'
