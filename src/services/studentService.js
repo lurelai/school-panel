@@ -3,7 +3,7 @@ const { query } = require('../database/db')
 const loginService = async (id, password)=>{
 	// For first, verify if the student exists, if exists, just continue, if not, return an error
 	const verifyStudentQuery = "SELECT name FROM students WHERE id=$1 AND password=$2"
-	const { result: studentResult } = await query(verifyStudentQuery, [id, password])
+	const { result: studentResult, queryTime: resultTime } = await query(verifyStudentQuery, [id, password])
 
 	if(studentResult.rows.length === 0)
 		return { message: null, err: "User or password not founded, please, check again" }
@@ -20,13 +20,18 @@ const loginService = async (id, password)=>{
 	FROM (SELECT years -> jsonb_object_keys(years) as route, jsonb_object_keys(years) as year FROM students where id=$1 AND password=$2)
 	ORDER BY year DESC;
 	`
-	const { result: studentRoute } = await query(getStudentRoute, [id, password])
+	const { result: studentRoute, queryTime: routeTime } = await query(getStudentRoute, [id, password])
 
 	// verify if exists any route
 	if(studentRoute.rows.length === 0)
 		return { message: "Okay", results: { studentResult: studentResult.rows, studentRoute: "NR"}, err: null} //NR=no route
 
-	return { message: "Okay", results: { studentRoute: studentRoute.rows, studentResult: studentResult.rows }, err: null}
+	return { 
+		message: "Okay", 
+		results: { studentRoute: studentRoute.rows, studentResult: studentResult.rows }, 
+		queryTime: { resultTime: resultTime+'ms', routeTime: routeTime+'ms' },
+		err: null 
+	} 
 }
 
 module.exports = { loginService }
