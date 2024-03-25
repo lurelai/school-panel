@@ -25,7 +25,7 @@ const getYearsService = async (id)=>{
 	// The main select just remove 'grade' of the route, the sub-query give us a table separing all years(ex: 2024, 2023) in rows
 	const getStudentRouteQuery = 
 		`
-	SELECT year
+	SELECT year, route - 'grade' as school_year_and_class
 	FROM (SELECT years -> jsonb_object_keys(years) as route, jsonb_object_keys(years) as year FROM students where id=$1)
 	ORDER BY year DESC;
 	`
@@ -37,18 +37,29 @@ const getYearsService = async (id)=>{
 
 	return {
 		message: "Okay", 
-		result: result.rows.map(e=>{ return e.year }),
+		result: result.rows,
 		queryTime,
 		err: null
 	}
 }
 
-const getGradeService = async (year, schoolYearAndClass, id)=>{
-	const queryString = "SELECT years ->  FROM students WHERE"
-	const result = await query(queryString)
+const getGradeService = async (year, id)=>{
+	const queryString = "SELECT years -> $1 -> 'grade' AS grade FROM students WHERE id=$2"
+	const { result } = await query(queryString, [year, id])
+
+	if(result.rows.length > 1)
+		return {message: null, err: "There's something wrong with your information, please, contact your school"}
+
+	// There's an error with the user id, if that is the case, it will need to delete the current JWT token and create a new
+	if(result.rows.length === 0)
+		return {message: null, err: "" }
+
+	// There's something wrong with the current year path, it will need to delete the current year cookie and create a new
+	if(result.rows.grade === null)
+		return { message: null, err: "" }
 
 	return {message: 'okay', err: null}
 }
 
-module.exports = { loginService, getYearsService }
+module.exports = { loginService, getYearsService, getGradeService }
 
