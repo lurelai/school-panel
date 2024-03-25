@@ -20,12 +20,12 @@ const loginService = async (id, password)=>{
 }
 
 // Know, the password isn't necessary, the validation to stay here will be made by JWT
-const getRouteService = async (id)=>{
+const getYearsService = async (id)=>{
 	// Complex query, it will get the student route, to return as a cookie for the front-end
 	// The main select just remove 'grade' of the route, the sub-query give us a table separing all years(ex: 2024, 2023) in rows
 	const getStudentRouteQuery = 
 		`
-	SELECT route - 'grade' as route, year
+	SELECT year
 	FROM (SELECT years -> jsonb_object_keys(years) as route, jsonb_object_keys(years) as year FROM students where id=$1)
 	ORDER BY year DESC;
 	`
@@ -33,15 +33,22 @@ const getRouteService = async (id)=>{
 
 	// verify if exists any route
 	if(result.rows.length === 0)
-		return { message: "Okay", result: "NR", queryTime, err: null } //NR=no route
+		return { message: "Okay", result: "NY", queryTime, err: null } // NY = no year
 
 	return {
 		message: "Okay", 
-		result: result.rows,
+		result: result.rows.map(e=>{ return e.year }),
 		queryTime,
 		err: null
 	}
 }
 
-module.exports = { loginService, getRouteService }
+const getGradeService = async (year, schoolYearAndClass, id)=>{
+	const queryString = "SELECT years ->  FROM students WHERE"
+	const result = await query(queryString)
+
+	return {message: 'okay', err: null}
+}
+
+module.exports = { loginService, getYearsService }
 

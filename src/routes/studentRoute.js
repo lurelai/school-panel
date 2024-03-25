@@ -1,12 +1,11 @@
 const router = require('express').Router()
 
 const loginController = require('../controllers/students/loginController')
-const { yearsList, schoolYearAndClassList, gradeList } = require('../controllers/students/studentController')
+const { yearsList, gradeList } = require('../controllers/students/studentController')
 const createCookieMiddleware = require('../middlewares/createCookieMiddleware')
 
 router.get('/', createCookieMiddleware, yearsList)
-router.get('/:year', createCookieMiddleware, schoolYearAndClassList)
-router.get('/:year/:schoolYearAndClass', createCookieMiddleware, gradeList)
+router.get('/:year', createCookieMiddleware, gradeList)
 
 router.post('/login', loginController)
 
