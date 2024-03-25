@@ -14,7 +14,7 @@ const loginController = async (req, res)=>{
 
 
 	// Logging the query time
-	console.log(`Login query time: ${queryTime}`, '\n')
+	console.log(`Login query time: ${queryTime}ms`)
 
 	// if there's some err, send it
 	if(err)

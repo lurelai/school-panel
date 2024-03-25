@@ -32,8 +32,8 @@ const createCookieService = async (id)=>{
 	const { result, queryTime } = await query(getStudentRouteQuery, [id])
 
 	// verify if exists any route
-	if(studentRoute.rows.length === 0)
-		return { message: "Okay", result: "NR", err: null } //NR=no route
+	if(result.rows.length === 0)
+		return { message: "Okay", result: "NR", queryTime, err: null } //NR=no route
 
 	return {
 		message: "Okay", 
@@ -43,5 +43,5 @@ const createCookieService = async (id)=>{
 	}
 }
 
-module.exports = { loginService }
+module.exports = { loginService, createCookieService }
 
