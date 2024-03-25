@@ -9,7 +9,12 @@ const gradeList = async (req, res)=>{
 	// It's temporaly, i will use JWT token to validated it
 	const { id } = req.query
 
-	await getGradeService(year, id)
+	const { result, err, errFunction, queryTime } = await getGradeService(year, id)
+
+	console.log(queryTime)
+
+	if(err === 'Invalid path'){
+	}
 
 	return res.send(req.params)
 }
