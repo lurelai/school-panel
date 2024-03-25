@@ -20,7 +20,7 @@ const loginService = async (id, password)=>{
 }
 
 // Know, the password isn't necessary, the validation to stay here will be made by JWT
-const createCookieService = async (id)=>{
+const getRouteService = async (id)=>{
 	// Complex query, it will get the student route, to return as a cookie for the front-end
 	// The main select just remove 'grade' of the route, the sub-query give us a table separing all years(ex: 2024, 2023) in rows
 	const getStudentRouteQuery = 
@@ -43,5 +43,5 @@ const createCookieService = async (id)=>{
 	}
 }
 
-module.exports = { loginService, createCookieService }
+module.exports = { loginService, getRouteService }
 
