@@ -44,8 +44,16 @@ require('./src/routes/studentRoute')(app)
 // Root
 app.get('/', async (req, res)=>{
 	return res.send(`
+	TO /student/
 	<form method="get" action="/student/">
 		<input type="text" name="id">
+		<input type="submit">
+	</form>
+
+	TO /student/login
+	<form method="post" action="/student/login">
+		<input type="text" name="id">
+		<input type="text" name="password" placeholder='password'>
 		<input type="submit">
 	</form>
 	`)

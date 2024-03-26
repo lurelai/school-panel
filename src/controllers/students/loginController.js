@@ -2,6 +2,7 @@
 
 const { loginService } = require('../../services/studentService')
 const { createToken } = require('../../services/cryptoService')
+const { createCookie } = require('../../services/cookieService')
 
 const loginController = async (req, res)=>{
 	const { id, password } = req.body
@@ -22,8 +23,8 @@ const loginController = async (req, res)=>{
 	if(err)
 		return res.send(err)
 
-	// Create a jwt token
-	console.log(createToken(result[0]))	
+	// Set a JWT token
+	createCookie(res, 'jwt', createToken(result[0]))
 
 	return res.send(result)
 }
