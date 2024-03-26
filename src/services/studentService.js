@@ -43,24 +43,5 @@ const getYearsService = async (id)=>{
 	}
 }
 
-const getGradeService = async (year, id)=>{
-	const queryString = "SELECT years -> $1 -> 'grade' AS grade FROM students WHERE id=$2"
-	const { result, queryTime } = await query(queryString, [year, id])
-
-	if(result.rows.length > 1)
-		return {message: null, err: "There's something wrong with your information, please, contact your school", queryTime}
-
-	// There's an error with the user id, if that is the case, it will need to delete the current JWT token and create a new
-	if(result.rows.length === 0)
-		return {message: null, err: "", queryTime}
-
-	// There's something wrong with the current year path, it will need to delete the current year cookie and create a new
-	if(result.rows[0].grade === null){
-		return { message: null, err: "Invalid path", queryTime }
-	}
-
-	return {message: 'okay', result: result.rows, err: null}
-}
-
-module.exports = { loginService, getYearsService, getGradeService }
+module.exports = { loginService, getYearsService }
 
