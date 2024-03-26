@@ -1,10 +1,10 @@
-const yearsList = async (req, res)=>{
-	return 'year list (welcome)'
+const yearsListController = async (req, res)=>{
+	return res.send('years list controller (welcome)')
 }
 
-const gradeList = async (req, res)=>{
-	return 'grade list (welcome)'
+const gradeListController = async (req, res)=>{
+	return res.send('grade list controller (welcome)')
 }
 
-module.exports = { yearsList, gradeList }
+module.exports = { yearsListController, gradeListController }
 

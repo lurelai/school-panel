@@ -8,5 +8,22 @@ const createCookie = (res, cookieName, data)=>{
 	return true
 }
 
-module.exports = { createCookie }
+const readCookie = (req, cookieName)=>{
+	const cookies = req.headers.cookie.split('; ')
+
+	const cookieNameIndex = cookies.findIndex(element=>{
+		return element.includes(`${cookieName}=`)
+	})
+
+	if(cookieNameIndex === -1)
+		return { err: 'cookie not found' }
+
+	const [name, value] = cookies[cookieNameIndex].split('=')
+
+	return { 
+		cookieInfo: { name, value } 
+	}
+}
+
+module.exports = { createCookie, readCookie }
 

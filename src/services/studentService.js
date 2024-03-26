@@ -6,7 +6,7 @@ const loginService = async (id, password)=>{
 	const { result, queryTime } = await query(verifyStudentQuery, [id, password])
 
 	if(result.rows.length === 0)
-		return { message: null, err: "User or password not founded, please, check again" }
+		return { message: null, err: "User or password not found, please, check again" }
 
 	if(result.rows.length > 1)
 		return { message: null, err: "There's something wrong with your informations, please, contact your school to resolve it"}

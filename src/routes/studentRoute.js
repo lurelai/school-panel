@@ -1,10 +1,15 @@
 const router = require('express').Router()
 
+// Controllers
 const loginController = require('../controllers/students/loginController')
-const { yearsList, gradeList } = require('../controllers/students/studentController')
+const { yearsListController, gradeListController } = require('../controllers/students/studentController')
 
-router.get('/', yearsList)
-router.get('/:year', gradeList)
+
+// Middlewares
+const loginRequired = require('../middlewares/loginRequired')
+
+router.get('/', loginRequired, yearsListController)
+router.get('/:year', loginRequired, gradeListController)
 
 router.post('/login', loginController)
 
