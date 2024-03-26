@@ -1,7 +1,8 @@
+const { join } = require('path')
 const { getGradeService } = require('../../services/studentService')
 
 const yearsList = async (req, res)=>{
-	return res.send('Year list')
+	return res.sendFile(join(__dirname, '../../../public/views/years-list.html'))
 }
 
 const gradeList = async (req, res)=>{
