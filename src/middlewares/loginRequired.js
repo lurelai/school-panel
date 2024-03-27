@@ -1,15 +1,24 @@
 'use strict';
 
-const { readCookie } = require('../services/cookieService')
+const { readCookie, deleteCookie } = require('../services/cookieService')
 const { verifyToken } = require('../services/cryptoService')
 
 const loginRequired = (req, res, next)=>{
 	const { cookieInfo, err } = readCookie(req, 'jwt')
 
+	// Verify if the cookie name exists
 	if(err === 'cookie not found')
 		return res.redirect('/')
 
-	console.log(verifyToken(cookieInfo.value))
+	// Save the msg returned by the verifyToken function
+	const { msg } = verifyToken(cookieInfo.value)
+
+
+	// If the token is not valid, delete it and send the user to login page
+	if(msg === 'invalid token'){
+		deleteCookie(res, cookieInfo.name)
+		return res.redirect('/student/login')
+	}
 
 	next()
 }

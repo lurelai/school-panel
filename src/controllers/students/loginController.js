@@ -26,7 +26,7 @@ const loginController = async (req, res)=>{
 	// Set a JWT token
 	createCookie(res, 'jwt', createToken(result[0]))
 
-	return res.send(result)
+	return res.redirect('/student/')
 }
 
 module.exports = loginController

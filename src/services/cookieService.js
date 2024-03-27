@@ -25,5 +25,13 @@ const readCookie = (req, cookieName)=>{
 	}
 }
 
-module.exports = { createCookie, readCookie }
+const deleteCookie = (res, cookieName)=>{
+	res.set({
+		'Set-Cookie': `${cookieName}=sorry; Max-Age=0`
+	})
+
+	return { msg: 'cookie deleted' }
+}
+
+module.exports = { createCookie, readCookie, deleteCookie }
 
