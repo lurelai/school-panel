@@ -26,7 +26,7 @@ app.use((req, res, next)=>{
 		return res.send('Wait a minute... We are trying to connect the database').status(500)
 
 	if(__LOCK__)
-		return res.send("There\'s something wrong with the database...").status(500)
+		return res.send("There's something wrong with the database...").status(500)
 
 	return next()
 })
@@ -44,12 +44,6 @@ require('./src/routes/studentRoute')(app)
 // Root
 app.get('/', async (req, res)=>{
 	return res.send(`
-	TO /student/
-	<form method="get" action="/student/">
-		<input type="text" name="id">
-		<input type="submit">
-	</form>
-
 	TO /student/login
 	<form method="post" action="/student/login">
 		<input type="text" name="id">

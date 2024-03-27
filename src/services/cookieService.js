@@ -9,6 +9,10 @@ const createCookie = (res, cookieName, data)=>{
 }
 
 const readCookie = (req, cookieName)=>{
+	// Verify if exists any cookie
+	if(!req.headers.cookie)
+		return { err: 'cookie not found' }
+
 	const cookies = req.headers.cookie.split('; ')
 
 	const cookieNameIndex = cookies.findIndex(element=>{

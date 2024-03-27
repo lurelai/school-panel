@@ -10,6 +10,7 @@ const studentRequired = (req, res, next)=>{
 	if(msg !== 'valid token')
 		return res.redirect('/student/')
 
+	// If it's not a student token, just send it
 	if(decoded.info.uses !== 'only student')
 		return res.send('Only students')
 
