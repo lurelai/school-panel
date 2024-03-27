@@ -14,7 +14,7 @@ const loginController = async (req, res)=>{
 		return res.send("You can't take requests without the password field")
 
 	// if all field are ok, send a request to database
-	const { result, err, queryTime } = await loginService(id, password)
+	let { result, err, queryTime } = await loginService(id, password)
 
 	// Logging the query time
 	console.log(`Login query time: ${queryTime}ms`)
@@ -23,10 +23,20 @@ const loginController = async (req, res)=>{
 	if(err)
 		return res.send(err)
 
+	// always there's just one element
+	result = result.map(element=>{
+		return {
+			indentify: element,
+			info: {
+				uses: 'only student'
+			}
+		}
+	})
+
 	// Set a JWT token
 	createCookie(res, 'jwt', createToken(result[0]))
 
-	return res.redirect('/student/')
+	return res.send('okay')
 }
 
 module.exports = loginController

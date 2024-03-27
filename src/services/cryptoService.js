@@ -7,7 +7,10 @@ const createToken = (data)=>{
 }
 
 const verifyToken = (token, needDecoded=false)=>{
-	console.log(token)
+	const possiblesPrefix = {
+		student: null
+	}
+
 	return verify(token, process.env.JSON_WEB_TOKEN_KEY, (err, decoded)=>{
 		if(err)
 			return { msg: 'invalid token' }
