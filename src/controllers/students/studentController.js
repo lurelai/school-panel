@@ -1,5 +1,7 @@
+const { join } = require('path')
+
 const yearsListController = async (req, res)=>{
-	return res.send('years list controller (welcome)')
+	return res.sendFile(join(__dirname, '../../../public/views/years-list.html'))
 }
 
 const gradeListController = async (req, res)=>{
