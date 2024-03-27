@@ -25,9 +25,8 @@ const loginController = async (req, res)=>{
 
 	const { result: routeResult, queryTime: routeQueryTime } = await getYearsService(id)
 
-	// Set a JWT token
+	// Set two JWT (AUTH) 
 	createCookie(res, 'jwt', createToken(loginResult))
-	createCookie(res, 'route', createToken(JSON.stringify(routeResult)))
 
 	return res.redirect('/student')
 }
