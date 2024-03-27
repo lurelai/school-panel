@@ -25,7 +25,7 @@ const gradeListController = async (req, res)=>{
 	const { value } = readCookie(req, 'jwt')
 	const { decoded } = verifyToken(value, true)
 
-	const result = await getGradeService(decoded.identify.id, year)
+	const { result, queryTime } = await getGradeService(decoded.identify.id, year)
 
 	return res.send(result)
 }
