@@ -51,13 +51,17 @@ const getYearsService = async (id)=>{
 }
 
 const getGradeService = async (id, year)=>{
-	console.log(id, year)
-
 	const queryString = "SELECT years -> $1 -> 'grade' AS grade FROM students WHERE id=$2"
 	const { result, queryTime } = await query(queryString, [year, id])
 
+	if(result.rows[0].grade === null)
+		return { result: "this year don't exists", queryTime }
+
+	if(Object.keys(result.rows[0].grade).length === 0)
+		return { result: "your grad's info has not defined yet", queryTime }
+
 	return {
-		result: result.rows,
+		result: result.rows[0],
 		queryTime
 	}
 }

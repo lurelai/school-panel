@@ -27,7 +27,7 @@ const gradeListController = async (req, res)=>{
 
 	const result = await getGradeService(decoded.identify.id, year)
 
-	return res.send('grade list controller (welcome)')
+	return res.send(result)
 }
 
 module.exports = { yearsListController, gradeListController }
