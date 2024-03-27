@@ -9,12 +9,28 @@
 		<div class="container">
 			<main>
 				<ul class="year-list">
-					<%for(let i of route){%>
-						<a href="/student/<%=i[0]%>"> <li><%=i[0]%></li> </a>
-					<%}%>
+						<a href="/student/"> <li></li> </a>
 				</ul>
 			</main>
 		</div>
+		<script>
+			const route = <%-route%>;
+			const ul = document.querySelector('.year-list')
+
+			if(route === "NY"){
+				ul.innerHTML = "There's nothing yet"
+			}
+
+			else{
+				let string = "\n"
+
+				for(let i of route){
+					string+=`<a href="/student/${i[0]}"><li> ${i[0]} ~ ${i[1]} ~ ${i[2]}</li></a>\n`
+				}
+
+				ul.innerHTML = string;
+			}
+		</script>
 	</body>
 </html>
 

@@ -50,5 +50,17 @@ const getYearsService = async (id)=>{
 	}
 }
 
-module.exports = { loginService, getYearsService }
+const getGradeService = async (id, year)=>{
+	console.log(id, year)
+
+	const queryString = "SELECT years -> $1 -> 'grade' AS grade FROM students WHERE id=$2"
+	const { result, queryTime } = await query(queryString, [year, id])
+
+	return {
+		result: result.rows,
+		queryTime
+	}
+}
+
+module.exports = { loginService, getYearsService, getGradeService }
 

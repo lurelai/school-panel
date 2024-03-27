@@ -1,7 +1,7 @@
 'use strict';
 
 const { join } = require('path')
-const { getYearsService } = require('../../services/studentService')
+const { getYearsService, getGradeService } = require('../../services/studentService')
 const { verifyToken } = require('../../services/cryptoService')
 const { readCookie } = require('../../services/cookieService')
 
@@ -15,10 +15,18 @@ const yearsListController = async (req, res)=>{
 	// log the query time 
 	console.log(`${queryTime}ms`)
 
-	return res.render('years-list', { route: result })
+	return res.render('years-list', { route: JSON.stringify(result) })
 }
 
 const gradeListController = async (req, res)=>{
+	const { year } = req.params
+
+	// Decode the jwt token to get the id
+	const { value } = readCookie(req, 'jwt')
+	const { decoded } = verifyToken(value, true)
+
+	const result = await getGradeService(decoded.identify.id, year)
+
 	return res.send('grade list controller (welcome)')
 }
 
