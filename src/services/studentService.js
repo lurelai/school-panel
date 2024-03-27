@@ -17,7 +17,7 @@ const loginService = async (id, password)=>{
 		err: null,
 		result: result.rows.map(element=>{
 			return {
-				indentify: element,
+				identify: element,
 				info: { uses: 'only student' }
 			}
 		})[0]
@@ -40,9 +40,13 @@ const getYearsService = async (id)=>{
 		return { result: "NY", queryTime, err: null } // NY = no year
 
 	return {
-		result: result.rows,
 		queryTime,
-		err: null
+		err: null,
+		result: result.rows.map(element=>{
+			const entries = Object.entries(element['school_year_and_class'])[0]
+
+			return [ element.year, entries[0], entries[1]]
+		})
 	}
 }
 

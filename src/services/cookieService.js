@@ -24,9 +24,7 @@ const readCookie = (req, cookieName)=>{
 
 	const [name, value] = cookies[cookieNameIndex].split('=')
 
-	return { 
-		cookieInfo: { name, value } 
-	}
+	return { name, value }
 }
 
 const deleteCookie = (res, cookieName)=>{

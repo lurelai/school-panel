@@ -1,11 +1,21 @@
 'use strict';
 
+const { join } = require('path')
+const { getYearsService } = require('../../services/studentService')
 const { verifyToken } = require('../../services/cryptoService')
 const { readCookie } = require('../../services/cookieService')
-const { join } = require('path')
 
 const yearsListController = async (req, res)=>{
-	return res.sendFile(join(__dirname, '../../../public/views/years-list.html'))
+	// Decode the jwt token to get the id
+	const { value } = readCookie(req, 'jwt')
+	const { decoded } = verifyToken(value, true)
+
+	const { result, queryTime } = await getYearsService(decoded.identify.id)
+
+	// log the query time 
+	console.log(`${queryTime}ms`)
+
+	return res.render('years-list', { route: result })
 }
 
 const gradeListController = async (req, res)=>{

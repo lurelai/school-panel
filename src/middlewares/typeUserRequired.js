@@ -1,12 +1,14 @@
 'use strict';
+
 const { verifyToken } = require('../services/cryptoService')
 const { readCookie } = require('../services/cookieService')
 
 const studentRequired = (req, res, next)=>{
-	const { cookieInfo } = readCookie(req, 'jwt')
-	const { msg, decoded } = verifyToken(cookieInfo.value, true)
+	// Get the cookie
+	const { value } = readCookie(req, 'jwt')
+	const { msg, decoded } = verifyToken(value, true)
 
-	// If it's invalid now, redirect to the /student to verify again
+	// If it's not invalid now, redirect to the /student to verify again
 	if(msg !== 'valid token')
 		return res.redirect('/student/')
 

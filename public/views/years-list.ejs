@@ -9,14 +9,12 @@
 		<div class="container">
 			<main>
 				<ul class="year-list">
-					<a href=""> <li>2024</li> </a>
-					<a href=""> <li>2023</li> </a>
+					<%for(let i of route){%>
+						<a href="/student/<%=i[0]%>"> <li><%=i[0]%></li> </a>
+					<%}%>
 				</ul>
 			</main>
 		</div>
-
-		<script>
-		</script>
 	</body>
 </html>
 

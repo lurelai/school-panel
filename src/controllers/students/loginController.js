@@ -1,6 +1,6 @@
 'use strict';
 
-const { loginService, getYearsService } = require('../../services/studentService')
+const { loginService } = require('../../services/studentService')
 const { createToken } = require('../../services/cryptoService')
 const { createCookie } = require('../../services/cookieService')
 
@@ -22,8 +22,6 @@ const loginController = async (req, res)=>{
 	// if there's some err, send it
 	if(err)
 		return res.send(err)
-
-	const { result: routeResult, queryTime: routeQueryTime } = await getYearsService(id)
 
 	// Set two JWT (AUTH) 
 	createCookie(res, 'jwt', createToken(loginResult))
