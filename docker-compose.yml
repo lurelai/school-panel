@@ -1,0 +1,10 @@
+services:
+  api:
+    container_name: "api"
+    image: "node:20.12"
+    command: /bin/bash -c "node app.js"
+    working_dir: "/usr/app"
+    volumes:
+      - "$PWD:/usr/app"
+
+
