@@ -2,8 +2,10 @@ services:
   api:
     container_name: "api"
     image: "node:20.12"
-    command: /bin/bash -c "node app.js"
+    command: /bin/bash -c "yarn run start"
     working_dir: "/usr/app"
+    ports:
+      - 8080:8000
     volumes:
       - "$PWD:/usr/app"
 
