@@ -1,0 +1,11 @@
+{
+  "name": "school-panel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lurelai/school-panel.git",
+  "author": "Lucas Ariel <github.lucas.ariel27@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
