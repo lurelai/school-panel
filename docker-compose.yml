@@ -1,3 +1,8 @@
+networks:
+  school-panel:
+    driver: bridge
+    name: school-panel
+
 services:
   api:
     container_name: "api"
@@ -6,6 +11,8 @@ services:
     working_dir: "/usr/app"
     ports:
       - 8080:8000
+    networks:
+      - school-panel
     volumes:
       - "$PWD:/usr/app"
 
