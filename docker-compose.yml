@@ -15,5 +15,27 @@ services:
       - school-panel
     volumes:
       - "$PWD:/usr/app"
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    container_name: "school-db"
+    image: "postgres:16.2"
+    ports: 
+      - 5432:5432
+    networks:
+      - school-panel
+    environment:
+      - "POSTGRES_PASSWORD=${POSTGRTES_PASSWORD}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_DB=${POSTGRES_DB}"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -p ${POSTGRES_PORT} -d ${POSTGRES_DB}"]
+      interval: 7s
+      timeout: 2s
+      retries: 6
+
+      
 
 
