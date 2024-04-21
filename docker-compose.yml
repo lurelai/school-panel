@@ -7,7 +7,7 @@ services:
   api:
     container_name: "api"
     image: "node:20.12"
-    command: /bin/bash -c "yarn run start"
+    command: /bin/bash -c "yarn install && yarn run start"
     working_dir: "/usr/app"
     ports:
       - 8080:8000
