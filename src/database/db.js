@@ -1,5 +1,7 @@
 'use strict';
 const Pool = require('pg-pool')
+const { readFileSync } = require('fs')
+const { join } = require('path')
 
 // configure dotenv
 require('dotenv').config()
@@ -20,6 +22,11 @@ const createConnection = async ()=>{
 		const end = Date.now() - start
 
 		console.log("Postgres connection setted")
+
+		const createDefaultTables = await readFileSync(join(__dirname, 'create-tables.sql'), "ASCII")
+
+		await pool.query(createDefaultTables)
+
 		return { connectionTime: end }
 	}catch(err){
 		console.log(err)
