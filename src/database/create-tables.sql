@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS teachers(
 
 CREATE TABLE IF NOT EXISTS admin(
 	admin_id varchar(100) UNIQUE NOT NULL,
-	admin_password varchar(100) UNIQUE NOT NULL
+	admin_password varchar(100) UNIQUE NOT NULL,
+	admin_level varchar(5) UNIQUE NOT NULL 
 );
 
