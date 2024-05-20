@@ -1,0 +1,11 @@
+services:
+  api:
+    image: "node:20.12"
+    container_name: "main-api"
+    command: "node app.js"
+    working_dir: "/usr/app"
+    volumes: 
+      - "$PWD:/usr/app"
+    ports:
+      - "8080:8000"
+
