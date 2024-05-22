@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 
-
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 
 // External routes
@@ -11,7 +12,5 @@ app.get('/', (req, res)=>{
 	return res.send('okay')
 })
 
-app.listen(8000, ()=>{
-	console.log("Server on")
-})
+app.listen(8000, ()=>{ console.log("Server on") })
 
