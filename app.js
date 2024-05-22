@@ -1,6 +1,12 @@
 const express = require('express')
 const app = express()
 
+
+
+
+// External routes
+require('./src/routes/studentRoute')(app)
+
 app.get('/', (req, res)=>{
 	return res.send('okay')
 })
