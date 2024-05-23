@@ -4,7 +4,7 @@ const register = (req, res)=>{
 	const { name, password } = req.body
 	
 	// pre-see
-	if(!adminName || !password)
+	if(!name || !password)
 		return res.send("request dinied")
 
 	// send the info for database
