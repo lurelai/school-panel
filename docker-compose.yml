@@ -16,3 +16,7 @@ services:
     networks:
       - school-network
 
+  db:
+    image: "postgres:16.2"
+    container_name: "database"
+
