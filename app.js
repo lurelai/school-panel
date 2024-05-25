@@ -1,3 +1,9 @@
+// set database connection
+require('./src/database/db').connection().then(e=>{
+	console.log(e)
+})
+
+
 const express = require('express')
 const app = express()
 

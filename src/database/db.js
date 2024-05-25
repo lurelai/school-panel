@@ -10,5 +10,16 @@ const pool = new Pool({
 	host: process.env.POSTGRES_HOST
 })
 
+const connection = async ()=>{
+	try{
+		await pool.connect()
 
+		return 'okay'
+	}catch(err){
+		console.log(err)
+		return err
+	}
+}
+
+module.exports = { connection }
 
