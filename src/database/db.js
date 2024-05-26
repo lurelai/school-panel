@@ -12,14 +12,25 @@ const pool = new Pool({
 
 const connection = async ()=>{
 	try{
+		const start = Date.now()
 		await pool.connect()
+		const end = Date.now() - start
 
-		return 'okay'
+		return { connectionTime: end }
 	}catch(err){
-		console.log(err)
-		return err
+		throw err
 	}
 }
 
-module.exports = { connection }
+const query = async (queryString, args)=>{
+	await pool.query("INSERT INTO users VALUES('Ariel');")
+
+	const start = Date.now()
+	const result = await pool.query(queryString, args)
+	const end = Date.now() - start
+
+	return { result, queryTime: end }
+}
+
+module.exports = { connection, query }
 
