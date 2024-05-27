@@ -1,4 +1,6 @@
 const { Pool } = require('pg')
+const { join } = require('path')
+const { readFileSync } = require('fs')
 
 require('dotenv').config()
 
@@ -15,6 +17,8 @@ const connection = async ()=>{
 		const start = Date.now()
 		await pool.connect()
 		const end = Date.now() - start
+
+		pool.query(readFileSync(join(__dirname, 'create-tables.sql'), 'ASCII'))
 
 		return { connectionTime: end }
 	}catch(err){
