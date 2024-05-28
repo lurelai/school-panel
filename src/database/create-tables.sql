@@ -4,3 +4,8 @@ CREATE TABLE IF NOT EXISTS subjects(
 	ID varchar(100) UNIQUE NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS years(
+	value varchar(6),
+	ID varchar(100) UNIQUE NOT NULL
+);
+
