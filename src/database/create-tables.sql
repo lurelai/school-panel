@@ -1,23 +1,32 @@
-CREATE TABLE SCHOO_YEARS(
-	name varchar(20),
-	q_level varchar(40),
-	ID varchar(40) NOT NULL UNIQUE
-);
-
-CREATE TABLE YEARS(
+CREATE TABLE IF NOT EXISTS Years(
+	ID varchar(30),
 	year varchar(6) NOT NULL UNIQUE,
-	ID varchar(40) NOT NULL UNIQUE
+	PRIMARY KEY(ID)
 );
 
-CREATE TABLE SUBJECTS(
-	name varchar(60) NOT NULL,
-	status varchar(15) NOT NULL
+CREATE TABLE IF NOT EXISTS School_years(
+	ID varchar(30),
+	name varchar(30) NOT NULL,
+	j_level varchar(30) NOT NULL,
+	year varchar(6) NOT NULL,
+	FOREIGN KEY(year) REFERENCES Years(ID),
+	PRIMARY KEY(ID)
 );
 
-CREATE TABLE STUDENTS(
-	name varchar(230) NOT NULL,
-	age int NOT NULL,
-	sex varchar(8) NOT NULL,
-	ID varchar(40) NOT NULL UNIQUE
+CREATE TABLE IF NOT EXISTS Subjects(
+	ID varchar(30),
+	name varchar(70) NOT NULL UNIQUE,
+	status varchar(14) NOT NULL,
+	year_added varchar(6) NOT NULL,
+	FOREIGN KEY(year_added) REFERENCES Years(ID),
+	PRIMARY KEY(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Itinerary(
+	ID varchar(30),
+	type varchar(20) NOT NULL UNIQUE,
+	year_added varchar(6) NOT NULL,
+	FOREIGN KEY (year_added) REFERENCES Years(ID),
+	PRIMARY KEY(ID)
 );
 
