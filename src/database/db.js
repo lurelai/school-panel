@@ -18,7 +18,6 @@ const connection = async ()=>{
 		await pool.connect()
 		const end = Date.now() - start
 
-		await pool.query("DROP TABLE School_years; DROP TABLE Subjects; DROP TABLE Itinerary; DROP TABLE Years;")
 		await pool.query(readFileSync(join(__dirname, 'create-tables.sql'), 'ASCII'))
 
 		return { connectionTime: end }
