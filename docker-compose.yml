@@ -1,7 +1,12 @@
 networks:
-  school-network:
+  school-net:
     driver: bridge
     name: school-network
+
+volumes:
+  db-vol:
+    driver: local
+    name: database_volume
 
 services:
   api:
@@ -14,7 +19,7 @@ services:
     ports:
       - "8080:8000"
     networks:
-      - school-network
+      - school-net
 
   school-database:
     image: "postgres:16.2"
@@ -24,5 +29,7 @@ services:
       - "POSTGRES_DB=${POSTGRES_DATABASE}"
       - "POSTGRES_USER=${POSTGRES_USER}"
     networks:
-      - school-network
+      - school-net
+    volumes:
+      - db-vol:/var/lib/postgresql/data
 
