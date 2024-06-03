@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const studentController = require('../controllers/studentController')
+const studentController = require('../controllers/student-controller')
 
 router.get('/', studentController)
 
