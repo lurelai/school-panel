@@ -1,6 +1,6 @@
 'use strict';
-const { createId } = require('../../services/work-id')
-const { insertYear } = require('../../services/year-table')
+const { createId } = require('../../services/work-id-service');
+const { insertYear, getYear } = require('../../services/year-table-service');
 
 const createYear = async (req, res)=>{
 	const { year } = req.body;
@@ -11,12 +11,32 @@ const createYear = async (req, res)=>{
 	if(isNaN(Number(year)))
 		return res.send({ type: 'err', body: 'year field needs to be a number' });
 
-	const { ID } = await createId('years');
+	const { id } = await createId('years');
 
-	const result = await insertYear(ID, year);
+	const result = await insertYear(id, year);
 
 	return res.send(result);
 };
 
-module.exports = { createYear };
+const readYear = async (req, res) =>{
+	const { id, year } = req.query;
+
+	let result = null
+
+	// It needs to have at least one field (id or year) to go on
+	if(!id && !year)
+		return res.send('Incomplet Field');
+
+	// If exists ID it will join here
+	if(id)
+		result = await getYear('id', id);
+
+	// If don't exist ID, it will join here(it only join here if id don't exist and year exist)
+	if(!id)
+		result = await getYear('name', year)
+
+	return res.send(result);
+};
+
+module.exports = { createYear, readYear };
 
