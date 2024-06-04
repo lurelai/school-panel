@@ -4,7 +4,7 @@ const { randomUUID } = new ShortUniqueId({ length: 12 });
 const createId = async (type)=>{
 	if(type === 'years'){
 		const start = Date.now();
-		const ID = randomUUID();
+		const ID = 'Y-' + randomUUID();
 		const end = Date.now() - start;
 
 		return { ID, createIdTime: end + 'ms' };
