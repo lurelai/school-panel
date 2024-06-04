@@ -27,8 +27,6 @@ const connection = async ()=>{
 }
 
 const query = async (queryString, args)=>{
-	await pool.query("INSERT INTO users VALUES('Ariel');")
-
 	const start = Date.now()
 	const result = await pool.query(queryString, args)
 	const end = Date.now() - start

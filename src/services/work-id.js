@@ -1,7 +1,7 @@
 const ShortUniqueId = require('short-unique-id');
 const { randomUUID } = new ShortUniqueId({ length: 12 });
 
-const createId = (type)=>{
+const createId = async (type)=>{
 	if(type === 'years'){
 		const start = Date.now();
 		const ID = randomUUID();

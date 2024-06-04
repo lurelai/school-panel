@@ -1,10 +1,10 @@
 'use strict';
 const router = require('express').Router()
 
-const { insertYear } = require('../controllers/tables/year-controller')
+const { createYear } = require('../controllers/tables/year-controller')
 
 // table: years
-router.post('/years/insert', insertYear);
+router.post('/years/insert', createYear);
 
 
 module.exports = app=>app.use('/tables-way', router);
