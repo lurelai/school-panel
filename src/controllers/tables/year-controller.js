@@ -1,6 +1,6 @@
 'use strict';
 const { createId } = require('../../services/work-id-service');
-const { insertYear, getYear } = require('../../services/year-table-service');
+const { insertYear, getYear } = require('../../services/tables/year-service');
 
 const createYear = async (req, res)=>{
 	const { year } = req.body;

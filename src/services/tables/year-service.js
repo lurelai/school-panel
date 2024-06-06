@@ -1,5 +1,5 @@
 'use strict';
-const { query } = require('../database/db');
+const { query } = require('../../database/db');
 
 const insertYear = async (id, year)=>{
 	try{

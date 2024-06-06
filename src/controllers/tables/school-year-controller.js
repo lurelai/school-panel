@@ -8,7 +8,6 @@ const createSchoolYear = async (req, res)=>{
 
 	const { id } = await createId('school-years');
 
-	console.log(id)
 
 	return res.send('ok');
 };
