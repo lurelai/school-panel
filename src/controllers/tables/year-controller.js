@@ -18,6 +18,8 @@ const createYear = async (req, res)=>{
 	return res.send(result);
 };
 
+
+// I will stop at the read in the year's table, the idea of the years table is be something unmutable
 const readYear = async (req, res) =>{
 	const { id, year } = req.query;
 

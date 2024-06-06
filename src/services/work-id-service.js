@@ -3,19 +3,20 @@ const { randomUUID } = new ShortUniqueId({ length: 12 });
 
 const createId = async (type)=>{
 	const prefixs = {
-		"years": "Y-"
-	};
-	const prefix = prefixs[type]
-
-	if(type === 'years'){
-		const start = Date.now();
-		const id = prefix + randomUUID();
-		const end = Date.now() - start;
-
-		return { id, createIdTime: end + 'ms' };
+		"years": "Y-",
+		"school-years": "J-"
 	};
 
-	return { id: false };
+	// verify if the type really exists
+	if(!prefixs[type])
+		return {type: 'err', body: 'err type', id: false};
+
+
+	const start = Date.now();
+	const id = prefixs[type] + randomUUID();
+	const end = Date.now() - start;
+
+	return { id, createIdTime: end + 'ms' };
 };
 
 module.exports = { createId };
