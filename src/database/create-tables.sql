@@ -7,11 +7,11 @@ CREATE TABLE IF NOT EXISTS Years(
 
 CREATE TABLE IF NOT EXISTS School_years(
 	ID varchar(30),
-	name varchar(30) NOT NULL,
+	name varchar(30) NOT NULL UNIQUE,
 	j_level varchar(30) NOT NULL, -- eq: elementary, high school etc
-	year varchar(30) NOT NULL,
+	year_id varchar(30) NOT NULL,
 
-	FOREIGN KEY(year) REFERENCES Years(ID),
+	FOREIGN KEY(year_id) REFERENCES Years(ID),
 	PRIMARY KEY(ID)
 );
 
