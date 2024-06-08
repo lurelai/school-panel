@@ -1,7 +1,8 @@
 const { createId } = require('../../services/work-id-service');
-const { insertSchoolYear } = require('../../services/tables/school-year-service');
+const { insertSchoolYear, updateSchoolYear } = require('../../services/tables/school-year-service');
 
-const createSchoolYear = async (req, res)=>{
+// create school year
+const cSchoolYear = async (req, res)=>{
 	const { name, jLevel, year_id } = req.body;
 
 	if(!name || !jLevel || !year_id)
@@ -14,5 +15,22 @@ const createSchoolYear = async (req, res)=>{
 	return res.send('ok');
 };
 
-module.exports = { createSchoolYear };
+// update school year
+const uSchoolYear = async (req, res)=>{
+	const { id, name, year_id } = req.body;
+
+	if(!name && !year_id)
+		return res.send({type: 'err', body: 'incomplet field'});
+
+	let info = null;
+
+	if(name && !year_id)
+		info = [name, 'year_id', id];
+
+	await updateSchoolYear(info);
+
+	return res.send("Ok");
+};
+
+module.exports = { cSchoolYear, uSchoolYear };
 

@@ -13,5 +13,20 @@ const insertSchoolYear = async (id, name, jLevel, year_id)=>{
 	};
 };
 
-module.exports = { insertSchoolYear };
+const updateSchoolYear = async (values)=>{
+	try{
+		const queryString = 
+			`
+			UPDATE School_years 
+			SET name=$1, j_level=$2 WHERE id=$3`
+
+		await query(queryString, values);
+
+		return { type: 'update', body: 'ok' }
+	}catch(err){
+		return {type: 'err', body: err}
+	};
+};
+
+module.exports = { insertSchoolYear, updateSchoolYear };
 
