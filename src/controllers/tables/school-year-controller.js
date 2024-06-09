@@ -1,17 +1,20 @@
 const { createId } = require('../../services/work-id-service');
 const { insertSchoolYear, updateSchoolYear } = require('../../services/tables/school-year-service');
+const updateQuery = require('../../services/update-query-service');
 
 // create school year
 const cSchoolYear = async (req, res)=>{
 	const { name, jLevel, year_id } = req.body;
 
+	// verify the fields
 	if(!name || !jLevel || !year_id)
 		return res.send({type: 'err', body: 'incomplet field'});
 
+	// get a new id
 	const { id } = await createId('school-years');
 
-	const result = await insertSchoolYear(id, name, jLevel, year_id);
 
+	const result = await insertSchoolYear(id, name, jLevel, year_id);
 	return res.send(result)
 };
 
@@ -19,29 +22,20 @@ const cSchoolYear = async (req, res)=>{
 const uSchoolYear = async (req, res)=>{
 	const { id, name, yearId, jLevel } = req.body;
 
+	// verify the fields
 	if( !id || (!name && !yearId && !jLevel))
 		return res.send({type: 'err', body: 'incomplet field'});
 
-	const values = [id];
-	let queryString = "UPDATE School_years SET ";
+	// set the arrayTyped to the updateQuery
+	const arrayTyped = 
+		[['name', name], ['year_id', yearId], ['j_level', jLevel]];
 
-	let i = 1;
+	// Get the queryString and its array of values
+	const { queryString, values } = 
+		updateQuery("UPDATE School_years SET ", id, arrayTyped, "id");
 
-	[['name', name], ['year_id', yearId], ['j_level', jLevel]].forEach((e) => {
-		if(!e[1])
-			return false;
-
-		values.push(e[1]);
-
-		queryString += `${e[0]}=$${i+1},`;
-		i++;
-	});
-
-	queryString = queryString.slice(0, queryString.length - 1);
-	queryString += " WHERE id=$1";
 
 	const result = await updateSchoolYear(queryString, values);
-
 	return res.send(result);
 };
 
