@@ -8,18 +8,15 @@ const insertSchoolYear = async (id, name, jLevel, year_id)=>{
 		`;
 
 		await query(queryString, [id, name, jLevel, year_id]);
+
+		return { type: 'insert', body: 'ok' };
 	}catch(err){
 		return { type: 'err', body: err };
 	};
 };
 
-const updateSchoolYear = async (values)=>{
+const updateSchoolYear = async (queryString, values)=>{
 	try{
-		const queryString = 
-			`
-			UPDATE School_years 
-			SET name=$1, j_level=$2 WHERE id=$3`
-
 		await query(queryString, values);
 
 		return { type: 'update', body: 'ok' }

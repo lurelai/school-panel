@@ -23,7 +23,7 @@ const createYear = async (req, res)=>{
 const readYear = async (req, res) =>{
 	const { id, year } = req.query;
 
-	let result = null
+	let result = null;
 
 	// It needs to have at least one field (id or year) to go on
 	if(!id && !year)
