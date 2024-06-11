@@ -1,3 +1,4 @@
+'use strict';
 const { createId } = require('../../services/work-id-service');
 const { insertSchoolYear, updateSchoolYear } = require('../../services/tables/school-year-service');
 const updateQuery = require('../../services/update-query-service');
