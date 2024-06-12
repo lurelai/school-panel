@@ -1,7 +1,5 @@
-'use strict';
-const { createId } = require('../../services/work-id-service');
-const { insertSchoolYear, updateSchoolYear } = require('../../services/tables/school-year-service');
-const updateQuery = require('../../services/update-query-service');
+const { updateSchoolYear } = require('../../services/tables/school-year-service');
+const updateTable = require('../../services/update-table-service');
 
 // create school year
 const cSchoolYear = async (req, res)=>{
@@ -31,12 +29,9 @@ const uSchoolYear = async (req, res)=>{
 	const arrayTyped = 
 		[['name', name], ['year_id', yearId], ['j_level', jLevel]];
 
-	// Get the queryString and its array of values
-	const { queryString, values } = 
-		updateQuery("UPDATE School_years SET ", id, arrayTyped, "id");
+	// Updat and get the result
+	const result = await updateTable("UPDATE School_years SET ", id, arrayTyped, "id");
 
-
-	const result = await updateSchoolYear(queryString, values);
 	return res.send(result);
 };
 
