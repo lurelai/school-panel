@@ -1,16 +1,6 @@
 'use strict';
 const { query } = require('../../database/db');
 
-const insertYear = async (id, year)=>{
-	try{
-		await query('INSERT INTO years(id, year) VALUES($1, $2)', [id, year]);
-
-		return { type: 'msg', body: 'inserted', log: `INSERTED // ID: ${id} // YEAR: ${year}` };
-	}catch(err){
-		return { type: 'err', body: err };
-	};
-};
-
 const getYear = async(by, value)=>{
 	try{
 		let result = null;
@@ -30,5 +20,5 @@ const getYear = async(by, value)=>{
 	};
 };
 
-module.exports = { insertYear, getYear };
+module.exports = { getYear };
 

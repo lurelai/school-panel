@@ -1,6 +1,7 @@
 'use strict';
 const { createId } = require('../../services/work-id-service');
 const { insertYear, getYear } = require('../../services/tables/year-service');
+const insertTable = require('../../services/insert-table-service');
 
 const createYear = async (req, res)=>{
 	const { year } = req.body;
@@ -13,7 +14,7 @@ const createYear = async (req, res)=>{
 
 	const { id } = await createId('years');
 
-	const result = await insertYear(id, year);
+	const result = await insertTable("years(ID, year)", [id, year]);
 
 	return res.send(result);
 };
