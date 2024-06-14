@@ -1,4 +1,6 @@
 const { updateSchoolYear } = require('../../services/tables/school-year-service');
+const { createId } = require('../../services/work-id-service');
+const insertTable = require('../../services/insert-table-service');
 const updateTable = require('../../services/update-table-service');
 
 // create school year
@@ -13,7 +15,7 @@ const cSchoolYear = async (req, res)=>{
 	const { id } = await createId('school-years');
 
 
-	const result = await insertSchoolYear(id, name, jLevel, year_id);
+	const result = await insertTable("School_years(id, name, j_level, year_id)",[id, name, jLevel, year_id]);
 	return res.send(result)
 };
 
