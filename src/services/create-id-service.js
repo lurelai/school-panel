@@ -20,5 +20,5 @@ const createId = async (type)=>{
 	return { id, createIdTime: end + 'ms' };
 };
 
-module.exports = { createId };
+module.exports = createId ;
 

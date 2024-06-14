@@ -1,5 +1,4 @@
-const { updateSchoolYear } = require('../../services/tables/school-year-service');
-const { createId } = require('../../services/work-id-service');
+const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 const updateTable = require('../../services/update-table-service');
 
@@ -14,7 +13,6 @@ const cSchoolYear = async (req, res)=>{
 	// get a new id
 	const { id } = await createId('school-years');
 
-
 	const result = await insertTable("School_years(id, name, j_level, year_id)",[id, name, jLevel, year_id]);
 	return res.send(result)
 };
@@ -28,11 +26,13 @@ const uSchoolYear = async (req, res)=>{
 		return res.send({type: 'err', body: 'incomplet field'});
 
 	// set the arrayTyped to the updateQuery
-	const arrayTyped = 
-		[['name', name], ['year_id', yearId], ['j_level', jLevel]];
+	const arrayTyped = [['name', name], ['year_id', yearId], ['j_level', jLevel]];
 
 	// Updat and get the result
-	const result = await updateTable("UPDATE School_years SET ", id, arrayTyped, "id");
+	const result = await updateTable("UPDATE School_years SET ", {
+		id: id, 
+		arrayTyped: arrayTyped, 
+	});
 
 	return res.send(result);
 };

@@ -1,4 +1,4 @@
-const { createId } = require('../../services/work-id-service');
+const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 
 const cSubject = async (req, res)=>{

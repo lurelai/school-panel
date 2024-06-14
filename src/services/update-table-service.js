@@ -1,14 +1,18 @@
 const { query } = require('../database/db');
 
-const updateTable = async (baseQuery, toFind, arrayTyped, finalQuery)=>{
+const updateTable = async (baseQuery, {id, arrayTyped, filter})=>{
 	try{
 		// baseQuery eq: UPDATE School_years SET (with a space after the SET)
-		// toFind eq: Y-randomID (the value who is used to filter at the WHERE)
+		// id eq: Y-randomID (the value who is used to filter at the WHERE)
 		// arrayTyped: the values to update + it's table name eq: [name, 'update-to-this-name']
-		// finalQuery: what becomes after the WHERE ...=$1 eq: id
+		// filter: what becomes after the WHERE ...=$1 eq: "AND name='i am cool'"
 
-		const values = [toFind];
+		const values = [id];
 		let queryString = baseQuery;
+
+		// set filter as a no length string
+		if(!filter)
+			filter = "";
 
 		let i = 1;
 		arrayTyped.forEach((e)=>{
@@ -27,7 +31,7 @@ const updateTable = async (baseQuery, toFind, arrayTyped, finalQuery)=>{
 
 		// finish to process the query string
 		queryString = queryString.slice(0, queryString.length - 1);
-		queryString += ` WHERE ${finalQuery}=$1`;
+		queryString += ` WHERE ID=$1 ${filter}`;
 
 		await query(queryString, values);
 

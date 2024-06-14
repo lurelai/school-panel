@@ -1,13 +1,13 @@
 'use strict';
 const router = require('express').Router();
 
-const { createYear, readYear } = require('../controllers/tables/year-controller');
+const { cYear, rYear } = require('../controllers/tables/year-controller');
 const { cSchoolYear, uSchoolYear } = require('../controllers/tables/school-year-controller');
 const { cSubject } = require('../controllers/tables/subject-controller')
 
 // table: years
-router.post('/years/create', createYear);
-router.get('/years/read/', readYear);
+router.post('/years/create', cYear);
+router.get('/years/read/', rYear);
 
 
 // table: school-year

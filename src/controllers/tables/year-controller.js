@@ -1,9 +1,9 @@
 'use strict';
-const { createId } = require('../../services/work-id-service');
+const createId = require('../../services/create-id-service');
 const { getYear } = require('../../services/tables/year-service');
 const insertTable = require('../../services/insert-table-service');
 
-const createYear = async (req, res)=>{
+const cYear = async (req, res)=>{
 	const { year } = req.body;
 
 	if(!year)
@@ -21,7 +21,7 @@ const createYear = async (req, res)=>{
 
 
 // I will stop at the read in the year's table, the idea of the years table is be something unmutable
-const readYear = async (req, res) =>{
+const rYear = async (req, res) =>{
 	const { id, year } = req.query;
 
 	let result = null;
@@ -41,5 +41,5 @@ const readYear = async (req, res) =>{
 	return res.send(result);
 };
 
-module.exports = { createYear, readYear };
+module.exports = { cYear, rYear };
 
