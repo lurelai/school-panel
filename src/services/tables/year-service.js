@@ -2,6 +2,7 @@
 const { query } = require('../../database/db');
 
 const getYear = async(by, value)=>{
+	// SELECT tarara FROM YEARS WHERE id=$1
 	try{
 		let result = null;
 

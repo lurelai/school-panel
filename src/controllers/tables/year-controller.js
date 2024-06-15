@@ -2,6 +2,7 @@
 const createId = require('../../services/create-id-service');
 const { getYear } = require('../../services/tables/year-service');
 const insertTable = require('../../services/insert-table-service');
+const getTable = require('../../services/get-table-service');
 
 const cYear = async (req, res)=>{
 	const { year } = req.body;
@@ -32,11 +33,11 @@ const rYear = async (req, res) =>{
 
 	// If exists ID it will join here
 	if(id)
-		result = await getYear('id', id);
+		result = await getTable('years', 'byId', id);
 
 	// If don't exist ID, it will join here(it only join here if id don't exist and year exist)
 	if(!id)
-		result = await getYear('name', year);
+		result = await getTable('years', 'byName', year);
 
 	return res.send(result);
 };

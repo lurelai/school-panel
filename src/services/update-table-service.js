@@ -8,7 +8,7 @@ const updateTable = async (baseQuery, {id, arrayTyped, filter})=>{
 		// filter: what becomes after the WHERE ...=$1 eq: "AND name='i am cool'"
 
 		const values = [id];
-		let queryString = baseQuery;
+		let queryString = baseQuery + " ";
 
 		// set filter as a no length string
 		if(!filter)
