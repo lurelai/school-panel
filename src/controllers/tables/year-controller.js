@@ -37,7 +37,7 @@ const rYear = async (req, res) =>{
 
 	// If don't exist ID, it will join here(it only join here if id don't exist and year exist)
 	if(!id)
-		result = await getTable('years', 'byName', year);
+		result = await getTable('years', 'byYear', year);
 
 	return res.send(result);
 };

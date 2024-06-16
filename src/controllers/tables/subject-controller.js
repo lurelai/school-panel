@@ -1,5 +1,6 @@
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
+const getTable = require('../../services/get-table-service');
 
 const cSubject = async (req, res)=>{
 	const { name, status, yearAdded } = req.body;
@@ -14,5 +15,23 @@ const cSubject = async (req, res)=>{
 	return res.send(result);
 };
 
-module.exports = { cSubject };
+const rSubject = async (req, res)=>{
+	const { id, name } = req.body;
+
+	let result = null;
+
+	if(!id && !name)
+		return res.send('Incomplet Field');
+
+
+	if(id)
+		result = await getTable('subjects', 'byId', id);
+
+	else
+		result = await getTable('subjects', 'byName', name);
+
+	return res.send(result);
+};
+
+module.exports = { cSubject, rSubject };
 
