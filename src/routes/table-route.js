@@ -7,7 +7,7 @@ const { cSubject, rSubject } = require('../controllers/tables/subject-controller
 
 // table: years
 router.post('/years/create', cYear);
-router.get('/years/read/', rYear);
+router.get('/years/read', rYear);
 
 
 // table: school-year
@@ -17,7 +17,7 @@ router.put('/school-years/update', uSchoolYear);
 
 // table: subject
 router.post('/subjects/create', cSubject);
-router.put('/subjects/read', rSubject);
+router.get('/subjects/read', rSubject);
 
 module.exports = app=>app.use('/tables-way', router);
 

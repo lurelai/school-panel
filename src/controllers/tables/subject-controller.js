@@ -16,7 +16,7 @@ const cSubject = async (req, res)=>{
 };
 
 const rSubject = async (req, res)=>{
-	const { id, name } = req.body;
+	const { id, name } = req.query;
 
 	let result = null;
 
