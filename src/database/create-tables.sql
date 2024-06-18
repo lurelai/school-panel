@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Subjects(
 
 CREATE TABLE IF NOT EXISTS Itinerarys(
 	ID varchar(30),
-	type varchar(20) NOT NULL UNIQUE,
+	i_type varchar(20) NOT NULL UNIQUE,
 	year_added varchar(30) NOT NULL,
 
 	FOREIGN KEY(year_added) REFERENCES Years(ID),

@@ -33,6 +33,9 @@ const updateTable = async (baseQuery, {id, arrayTyped, filter})=>{
 		queryString = queryString.slice(0, queryString.length - 1);
 		queryString += ` WHERE ID=$1 ${filter}`;
 
+		//log
+		console.log("log:", queryString, "//", values);
+
 		await query(queryString, values);
 
 		return { type: 'update', body: 'ok' };

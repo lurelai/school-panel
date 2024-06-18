@@ -1,6 +1,7 @@
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 const getTable = require('../../services/get-table-service');
+const updateTable = require('../../services/update-table-service');
 
 const cSubject = async (req, res)=>{
 	const { name, status, yearAdded } = req.body;
@@ -33,5 +34,23 @@ const rSubject = async (req, res)=>{
 	return res.send(result);
 };
 
-module.exports = { cSubject, rSubject };
+const uSubject = async (req, res)=>{
+	const { id, name, status } = req.body;
+
+	if( !id || (!name && !status))
+		return res.send({type: 'err', body: 'incomplet field'});
+
+
+	const arrayTyped = [['name', name], ['status', status]];
+
+	const result = await updateTable("UPDATE Subjects SET", {
+		id: id,
+		arrayTyped: arrayTyped
+	});
+
+	return res.send(result);
+
+};
+
+module.exports = { cSubject, rSubject, uSubject };
 
