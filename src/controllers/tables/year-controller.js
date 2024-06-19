@@ -7,16 +7,21 @@ const getTable = require('../../services/get-table-service');
 const cYear = async (req, res)=>{
 	const { year } = req.body;
 
+	// simple verify
 	if(!year)
 		return res.send({ type: 'err', body: 'incomplet field' });
 
+	// other verify
 	if(isNaN(Number(year)))
 		return res.send({ type: 'err', body: 'year field needs to be a number' });
 
+	// get and id
 	const { id } = await createId('years');
 
+	// try to insert
 	const result = await insertTable("years(ID, year)", [id, year]);
 
+	// send the result
 	return res.send(result);
 };
 
