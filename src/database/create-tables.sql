@@ -27,13 +27,14 @@ CREATE TABLE IF NOT EXISTS Subjects(
 
 CREATE TABLE IF NOT EXISTS Itinerarys(
 	ID varchar(30),
-	i_type varchar(20) NOT NULL UNIQUE,
+	name varchar(20) NOT NULL UNIQUE,
 	year_added varchar(30) NOT NULL,
 
 	FOREIGN KEY(year_added) REFERENCES Years(ID),
 	PRIMARY KEY(ID)
 );
 
+/*
 CREATE TABLE IF NOT EXISTS Classes(
 	ID varchar(30),
 	name varchar(30) NOT NULL,
@@ -67,4 +68,5 @@ CREATE TABLE IF NOT EXISTS Students(
 
 	PRIMARY KEY(ID)
 );
+*/
 

@@ -5,7 +5,8 @@ const createId = async (type)=>{
 	const prefixs = {
 		"years": "Y-",
 		"school-years": "J-",
-		"subjects": "S-"
+		"subjects": "S-",
+		"itinerarys": "I-"
 	};
 
 	// verify if the type really exists
