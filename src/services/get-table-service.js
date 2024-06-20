@@ -1,29 +1,37 @@
 const { query } = require('../database/db');
 
-const getTable = async(table, specify, input)=>{
-	const querys = {
-		years: {
-			byId: async (value)=>{ return (await query("SELECT * FROM Years WHERE id=$1", [value])).result.rows; },
-			byYear: async (value)=>{ return (await query("SELECT * FROM Years WHERE year=$1", [value])).result.rows; }
-		},
+const getTable = async ({toSelect, table, arrayTyped})=>{
+	let queryString = `SELECT ${toSelect} FROM ${table} WHERE `;
 
-		subjects: {
-			byId: async (value)=>{ return (await query("SELECT * FROM Subjects WHERE id=$1", [value])).result.rows; },
-			byName: async (value)=>{ return (await query("SELECT * FROM Subjects WHERE name=$1", [value])).result.rows; }
-		}
-	};
+	console.log('ok')
+	const values = [];
+
+	let i = 0;
+	// arrayTyped ex: [[field, value], [field, value]]
+	arrayTyped.forEach(e=>{
+		if(!e[1])
+			return false;
+
+		// add a new value to the values array
+		values.push(e[1]);
+
+		queryString  += `${e[0]}=$${i+1} AND `;
+
+		i++;
+	});
+
+	queryString = queryString.slice(0, queryString.length-5) + ';';
 
 	try{
-		const result = await querys[table][specify](input);
+		const result = (await query(queryString, values)).result.rows;
 
 		if(result.length === 0)
-			return { type: 'get', body: 'math not founded' };
+			return {type:'get', body: 'no match founded'};
 
-		return { type: 'get', body: result };
+		return {type:'get', body: result}
 	}catch(err){
-		return { type: 'err', body: err };
+		return {type:'err', body: err};
 	};
-
 };
 
 module.exports = getTable;

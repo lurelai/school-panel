@@ -19,6 +19,10 @@ const cItinerary = async (req, res)=>{
 	return res.send(result);
 };
 
+const rItinerary = async (req, res)=>{
+	return res.send('ok');
+}
+
 const dItinerary = async (req, res)=>{
 	const { id } = req.body;
 

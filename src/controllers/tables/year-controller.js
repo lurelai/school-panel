@@ -29,19 +29,19 @@ const cYear = async (req, res)=>{
 const rYear = async (req, res) =>{
 	const { id, year } = req.query;
 
-	let result = null;
-
-	// It needs to have at least one field (id or year) to go on
+	// verify
 	if(!id && !year)
-		return res.send('Incomplet Field');
+		return res.send({type: 'err', body: 'incomplet field'});
 
-	// If exists ID it will join here
-	if(id)
-		result = await getTable('years', 'byId', id);
+	// set the array typed
+	const arrayTyped = [['id', id], ['year', year]];
 
-	// If don't exist ID, it will join here(it only join here if id don't exist and year exist)
-	if(!id)
-		result = await getTable('years', 'byYear', year);
+	// get the result
+	const result = await getTable({
+		toSelect: '*',
+		table: 'years',
+		arrayTyped
+	});
 
 	return res.send(result);
 };
