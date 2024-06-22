@@ -39,7 +39,7 @@ const rYear = async (req, res) =>{
 	// get the result
 	const result = await getTable({
 		toSelect: '*',
-		table: 'years',
+		table: 'Years',
 		arrayTyped
 	});
 

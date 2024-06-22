@@ -21,21 +21,20 @@ const cSubject = async (req, res)=>{
 };
 
 const rSubject = async (req, res)=>{
-	const { id, name } = req.query;
-
-	let result = null;
+	const { id, name, status } = req.query;
 
 	// simple verify
-	if(!id && !name)
-		return res.send('Incomplet Field');
+	if(!id && !name && !status)
+		return res.send({type: 'err', body: 'incomplet field'});
 
-	// if there's an id send to the byId query
-	if(id)
-		result = await getTable('subjects', 'byId', id);
+	const arrayTyped = [['id', id], ['name', name], ['status', status]];
 
-	// if not send to the byName query
-	else
-		result = await getTable('subjects', 'byName', name);
+	const result = await getTable({
+		toSelect: '*',
+		table: 'Subjects',
+		arrayTyped
+	});
+
 
 	return res.send(result);
 };
