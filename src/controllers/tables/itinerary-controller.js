@@ -14,7 +14,10 @@ const cItinerary = async (req, res)=>{
 	const { id } = await createId('itinerarys');
 
 	// try to insert
-	const result = await insertTable('itinerarys(ID, name, year_added)', [id, name, yearAdded]);
+	const result = await insertTable({
+		table: 'itinerarys(ID, name, year_added)', 
+		values: [id, name, yearAdded]
+	});
 
 	return res.send(result);
 };

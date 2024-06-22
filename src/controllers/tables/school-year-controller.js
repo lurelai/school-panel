@@ -13,7 +13,10 @@ const cSchoolYear = async (req, res)=>{
 	// get a new id
 	const { id } = await createId('school-years');
 
-	const result = await insertTable("School_years(id, name, j_level, year_id)",[id, name, jLevel, year_id]);
+	const result = await insertTable({
+		table: "School_years(id, name, j_level, year_id)",
+		values: [id, name, jLevel, year_id]
+	});
 	return res.send(result)
 };
 

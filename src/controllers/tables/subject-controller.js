@@ -14,7 +14,10 @@ const cSubject = async (req, res)=>{
 	const { id } = await createId('subjects');
 
 	// try to insert
-	const result = await insertTable("subjects(id, name, status, year_added)", [id, name, status, yearAdded]);
+	const result = await insertTable({
+		table: "subjects(id, name, status, year_added)", 
+		values: [id, name, status, yearAdded]
+	});
 
 	// send the result
 	return res.send(result);

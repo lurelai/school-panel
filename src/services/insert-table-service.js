@@ -1,6 +1,6 @@
 const { query } = require('../database/db');
 
-const insertTable = async (table, values)=>{
+const insertTable = async ({table, values})=>{
 	// query string needs the table value with the orden of the passed values
 	let queryString = "INSERT INTO " + table + " VALUES(";
 	

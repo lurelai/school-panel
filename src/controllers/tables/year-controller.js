@@ -18,7 +18,9 @@ const cYear = async (req, res)=>{
 	const { id } = await createId('years');
 
 	// try to insert
-	const result = await insertTable("years(ID, year)", [id, year]);
+	const result = await insertTable({
+		table: "years(ID, year)", values: [id, year]
+	});
 
 	// send the result
 	return res.send(result);
