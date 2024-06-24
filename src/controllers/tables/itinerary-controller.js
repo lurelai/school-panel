@@ -2,6 +2,7 @@
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 const deleteTable = require('../../services/delete-table-service');
+const getTable = require('../../services/get-table-service');
 
 const cItinerary = async (req, res)=>{
 	const { name, yearAdded } = req.body;
@@ -23,7 +24,22 @@ const cItinerary = async (req, res)=>{
 };
 
 const rItinerary = async (req, res)=>{
-	return res.send('ok');
+	const { id, name, yearAdded } = req.query;
+
+	if(!id && !name && !yearAdded)
+		return res.send({type: 'err', body: 'incomplet field'});
+
+
+	// set array typed
+	const arrayTyped = [['id', id], ['name', name], ['year_added', yearAdded]];
+
+	const result = await getTable({
+		toSelect: '*',
+		table: 'Itinerarys',
+		arrayTyped
+	});		
+
+	return res.send(result);
 }
 
 const dItinerary = async (req, res)=>{
@@ -40,5 +56,5 @@ const dItinerary = async (req, res)=>{
 	return res.send(result);
 };
 
-module.exports = { cItinerary, dItinerary };
+module.exports = { cItinerary, dItinerary, rItinerary };
 

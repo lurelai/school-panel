@@ -3,7 +3,6 @@ const { query } = require('../database/db');
 const getTable = async ({toSelect, table, arrayTyped})=>{
 	let queryString = `SELECT ${toSelect} FROM ${table} WHERE `;
 
-	console.log('ok')
 	const values = [];
 
 	let i = 0;
