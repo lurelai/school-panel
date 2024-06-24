@@ -14,7 +14,7 @@ const cYear = async (req, res)=>{
 	if(isNaN(Number(year)))
 		return res.send({ type: 'err', body: 'year field needs to be a number' });
 
-	// get and id
+	// get id
 	const { id } = await createId('years');
 
 	// try to insert

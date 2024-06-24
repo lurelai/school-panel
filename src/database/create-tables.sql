@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS Itinerarys(
 	PRIMARY KEY(ID)
 );
 
-/*
 CREATE TABLE IF NOT EXISTS Classes(
 	ID varchar(30),
 	name varchar(30) NOT NULL,
@@ -50,6 +49,8 @@ CREATE TABLE IF NOT EXISTS Classes(
 	PRIMARY KEY(ID)
 );
 
+
+/*
 CREATE TABLE IF NOT EXISTS Grade(
 	ID varchar(30),
 	grades JSONB,
