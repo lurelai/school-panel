@@ -15,11 +15,11 @@ const cClass = async (req, res)=>{
 
 	// try to insert
 	const result = await insertTable({
-		table: "classes(name, year_id, school_year_id)",
-		values: [name, yearId, schoolYearId]
+		table: "classes(id, name, year_id, school_year_id)",
+		values: [id, name, yearId, schoolYearId]
 	});
 
-	return res.send('okay');
+	return res.send(result);
 };
 
 module.exports = { cClass };
