@@ -4,10 +4,10 @@ const getTable = require('../../services/get-table-service');
 const updateTable = require('../../services/update-table-service');
 
 const cSubject = async (req, res)=>{
-	const { name, status, yearAdded } = req.body;
+	const { name, status, yearId } = req.body;
 
 	// verify
-	if(!name || !yearAdded || !status)
+	if(!name || !yearId || !status)
 		return res.send({ type: 'err', body: 'incomplet field' });
 
 	// get the id
@@ -15,8 +15,8 @@ const cSubject = async (req, res)=>{
 
 	// try to insert
 	const result = await insertTable({
-		table: "subjects(id, name, status, year_added)", 
-		values: [id, name, status, yearAdded]
+		table: "subjects(id, name, status, year_id)", 
+		values: [id, name, status, yearId]
 	});
 
 	// send the result

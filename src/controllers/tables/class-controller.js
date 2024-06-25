@@ -3,10 +3,10 @@ const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 
 const cClass = async (req, res)=>{
-	const { name, fromYear, fromSchoolYear } = req.body;
+	const { name, yearId, schoolYearId } = req.body;
 
 	// verify
-	if(!name || !fromYear || !fromSchoolYear)
+	if(!name || !yearId || !schoolYearId)
 		return res.send({type: 'err', body: 'incomplet field'});
 
 	
@@ -15,8 +15,8 @@ const cClass = async (req, res)=>{
 
 	// try to insert
 	const result = await insertTable({
-		table: "classes(name, from-year, from-school-year)",
-		values: [name, fromYear, fromSchoolYear]
+		table: "classes(name, year_id, school_year_id)",
+		values: [name, yearId, schoolYearId]
 	});
 
 	return res.send('okay');

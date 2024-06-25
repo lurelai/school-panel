@@ -4,9 +4,10 @@ const { randomUUID } = new ShortUniqueId({ length: 12 });
 const createId = async (type)=>{
 	const prefixs = {
 		"years": "Y-",
-		"school-years": "J-",
+		"schoolYears": "SY-",
 		"subjects": "S-",
-		"itinerarys": "I-"
+		"itinerarys": "I-",
+		"classes": "C-"
 	};
 
 	// verify if the type really exists

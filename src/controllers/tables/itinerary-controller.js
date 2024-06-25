@@ -5,10 +5,10 @@ const deleteTable = require('../../services/delete-table-service');
 const getTable = require('../../services/get-table-service');
 
 const cItinerary = async (req, res)=>{
-	const { name, yearAdded } = req.body;
+	const { name, yearId } = req.body;
 
 	// verify
-	if(!name || !yearAdded )
+	if(!name || !yearId )
 		return res.send({type: 'err', body: 'incomplet field'});
 
 	// get the id
@@ -16,22 +16,22 @@ const cItinerary = async (req, res)=>{
 
 	// try to insert
 	const result = await insertTable({
-		table: 'itinerarys(ID, name, year_added)', 
-		values: [id, name, yearAdded]
+		table: 'itinerarys(ID, name, year_id)', 
+		values: [id, name, yearId]
 	});
 
 	return res.send(result);
 };
 
 const rItinerary = async (req, res)=>{
-	const { id, name, yearAdded } = req.query;
+	const { id, name, yearId } = req.query;
 
-	if(!id && !name && !yearAdded)
+	if(!id && !name && !yearId)
 		return res.send({type: 'err', body: 'incomplet field'});
 
 
 	// set array typed
-	const arrayTyped = [['id', id], ['name', name], ['year_added', yearAdded]];
+	const arrayTyped = [['id', id], ['name', name], ['year_id', yearId]];
 
 	const result = await getTable({
 		toSelect: '*',
