@@ -27,7 +27,6 @@ const cYear = async (req, res)=>{
 };
 
 
-// I will stop at the read in the year's table, the idea of the years table is be something unmutable
 const rYear = async (req, res) =>{
 	const { id, year } = req.query;
 

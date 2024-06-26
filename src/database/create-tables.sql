@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Classes(
 	school_year_id varchar(30) NOT NULL,
 	itinerary varchar(30),
 	students varchar(30) ARRAY,
-	subjects varchar(30),
+	subjects varchar(30) ARRAY,
 
 	FOREIGN KEY(year_id) REFERENCES Years(ID),
 	FOREIGN KEY(school_year_id) REFERENCES School_years(ID),
