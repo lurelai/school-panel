@@ -1,6 +1,7 @@
 'use strict';
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
+const updateTable = require('../../services/update-table-service');
 const getTable = require('../../services/get-table-service');
 
 const cClass = async (req, res)=>{
@@ -30,8 +31,7 @@ const rClass = async (req, res)=>{
 	if(!id && !name && !yearId && !schoolYearId && !itinerary)
 		return res.send({type: 'err', body: 'incomplet field'});
 
-	const arrayTyped = [
-	['id', id], ['name', name], ['year_id', yearId],
+	const arrayTyped = [['id', id], ['name', name], ['year_id', yearId],
 	['school_year_id', schoolYearId], ['itinerary', itinerary]];
 
 	// try to get
@@ -42,7 +42,34 @@ const rClass = async (req, res)=>{
 	});
 
 	return res.send(result);
-}
+};
 
-module.exports = { cClass, rClass };
+const uClass = async (req, res)=>{
+	const { way } = req.body;
+
+	if(!way)
+		return res.send({type: 'err', body: 'you need to specify a way'});
+
+	// if the way to update don't need array (the most simple)
+	if(way === "not arrays"){
+		const { id, name, yearId, schoolYearId, itinerary } = req.body;
+
+		// set the array typed
+		const arrayTyped = [['name', name], ['year_id', yearId],
+		['school_year_id', schoolYearId], ['itinerary', itinerary]];
+
+		// try to update
+		const result = await updateTable("UPDATE Classes SET", {
+			id: id,
+			arrayTyped
+		});
+
+		// send the result
+		return res.send(result);
+	}
+
+	return res.send("not here now");
+};
+
+module.exports = { cClass, rClass, uClass };
 

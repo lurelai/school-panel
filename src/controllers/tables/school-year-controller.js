@@ -35,7 +35,7 @@ const uSchoolYear = async (req, res)=>{
 	// Updat and get the result
 	const result = await updateTable("UPDATE School_years SET", {
 		id: id, 
-		arrayTyped: arrayTyped, 
+		arrayTyped, 
 	});
 
 	return res.send(result);
