@@ -44,8 +44,38 @@ const updateTableSimple = async (baseQuery, {id, arrayTyped, filter})=>{
 	};
 };
 
-const updateTableArray = async (table, {id})=>{
+const updateTableArray = async (baseQuery, {arrayTyped, id})=>{
+	let queryString = baseQuery + " ";
 
+	const values = [id];
+
+	let i = 1;
+	arrayTyped.forEach((e)=>{
+		if(!e[1] || e[1].length === 0)	
+			return false;
+
+		// add a new value to the values array
+		values.push(e[1]);
+
+		// concat the query string with the current values name and the next current i
+		queryString += `${e[0]}=array_cat(${e[0]}, $${i+1}),`;
+		i++;
+	});
+
+	// finish to process the query string
+	queryString = queryString.slice(0, queryString.length - 1);
+	queryString += ` WHERE ID=$1;`;
+
+	console.log("log:", queryString, "//", values);
+	try{
+		await query(queryString, values);
+		return { type: 'update', body: 'ok', };
+
+	}catch(err){
+		return { type: 'err', body: err };
+	};
+
+	return { queryString }
 };
 
 module.exports = { updateTableSimple, updateTableArray };

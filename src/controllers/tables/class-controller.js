@@ -27,7 +27,6 @@ const cClass = async (req, res)=>{
 const rClass = async (req, res)=>{
 	const { id, name, yearId, schoolYearId, itinerary } = req.query;
 
-	console.log(name)
 	if(!id && !name && !yearId && !schoolYearId && !itinerary)
 		return res.send({type: 'err', body: 'incomplet field'});
 
@@ -45,14 +44,14 @@ const rClass = async (req, res)=>{
 };
 
 const uClass = async (req, res)=>{
-	const { isArrayWay } = req.body;
+	const { isArrayWay, id } = req.body;
 
 	if(isArrayWay === undefined)
 		return res.send({type: 'err', body: 'you need to specify a way'});
 
 	// if the way to update don't need array (the most simple)
 	if(isArrayWay === false){
-		const { id, name, yearId, schoolYearId, itinerary } = req.body;
+		const { name, yearId, schoolYearId, itinerary } = req.body;
 
 		// verify
 		if(!id && !name && !yearId && !schoolYearId && !itinerary)
@@ -75,11 +74,18 @@ const uClass = async (req, res)=>{
 	// if is the array way go here
 	const { studentsArray, subjectsArray } = req.body;
 
-	if(!studentsArray || !subjectsArray)
+	// verify
+	if(!studentsArray && !subjectsArray)
 		return res.send({type: 'err', body: 'incomplet field'});
 
+	const arrayTyped = [['students', studentsArray], ['subjects', subjectsArray]];
 
-	return res.send("not here now");
+	const result = await updateTableArray("UPDATE Classes SET", {
+		id: id,
+		arrayTyped
+	});
+
+	return res.send(result);
 };
 
 module.exports = { cClass, rClass, uClass };
