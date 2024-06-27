@@ -1,7 +1,7 @@
 'use strict';
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
-const updateTable = require('../../services/update-table-service');
+const { updateTableSimple, updateTableArray } = require('../../services/update-table-service');
 const getTable = require('../../services/get-table-service');
 
 const cClass = async (req, res)=>{
@@ -64,7 +64,7 @@ const uClass = async (req, res)=>{
 		['school_year_id', schoolYearId], ['itinerary', itinerary]];
 
 		// try to update
-		const result = await updateTable("UPDATE Classes SET", {
+		const result = await updateTableSimple("UPDATE Classes SET", {
 			id: id,
 			arrayTyped
 		});

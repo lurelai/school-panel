@@ -1,6 +1,6 @@
 const { query } = require('../database/db');
 
-const updateTable = async (baseQuery, {id, arrayTyped, filter})=>{
+const updateTableSimple = async (baseQuery, {id, arrayTyped, filter})=>{
 	try{
 		// baseQuery eq: UPDATE School_years SET (with a space after the SET)
 		// id eq: Y-randomID (the value who is used to filter at the WHERE)
@@ -44,5 +44,9 @@ const updateTable = async (baseQuery, {id, arrayTyped, filter})=>{
 	};
 };
 
-module.exports = updateTable;
+const updateTableArray = async (table, {id})=>{
+
+};
+
+module.exports = { updateTableSimple, updateTableArray };
 

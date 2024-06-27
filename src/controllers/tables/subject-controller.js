@@ -1,7 +1,7 @@
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 const getTable = require('../../services/get-table-service');
-const updateTable = require('../../services/update-table-service');
+const { updateTableSimple } = require('../../services/update-table-service');
 
 const cSubject = async (req, res)=>{
 	const { name, status, yearId } = req.body;
@@ -53,7 +53,7 @@ const uSubject = async (req, res)=>{
 	const arrayTyped = [['name', name], ['status', status]];
 
 	// send all to the result
-	const result = await updateTable("UPDATE Subjects SET", {
+	const result = await updateTableSimple("UPDATE Subjects SET", {
 		id: id,
 		arrayTyped: arrayTyped
 	});
