@@ -45,14 +45,19 @@ const rClass = async (req, res)=>{
 };
 
 const uClass = async (req, res)=>{
-	const { way } = req.body;
+	const { isArrayWay } = req.body;
 
-	if(!way)
+	if(isArrayWay === undefined)
 		return res.send({type: 'err', body: 'you need to specify a way'});
 
 	// if the way to update don't need array (the most simple)
-	if(way === "not arrays"){
+	if(isArrayWay === false){
 		const { id, name, yearId, schoolYearId, itinerary } = req.body;
+
+		// verify
+		if(!id && !name && !yearId && !schoolYearId && !itinerary)
+			return res.send({type: 'err', body: 'you need to specify a field'});
+
 
 		// set the array typed
 		const arrayTyped = [['name', name], ['year_id', yearId],
@@ -66,7 +71,13 @@ const uClass = async (req, res)=>{
 
 		// send the result
 		return res.send(result);
-	}
+	};
+	// if is the array way go here
+	const { studentsArray, subjectsArray } = req.body;
+
+	if(!studentsArray || !subjectsArray)
+		return res.send({type: 'err', body: 'incomplet field'});
+
 
 	return res.send("not here now");
 };
