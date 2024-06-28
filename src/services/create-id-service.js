@@ -7,7 +7,8 @@ const createId = async (type)=>{
 		"schoolYears": "SY-",
 		"subjects": "S-",
 		"itinerarys": "I-",
-		"classes": "C-"
+		"classes": "C-",
+		"students": "ST-"
 	};
 
 	// verify if the type really exists

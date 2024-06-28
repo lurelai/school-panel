@@ -13,7 +13,6 @@ app.use(express.json());
 
 
 // External routes
-require('./src/routes/student-route')(app);
 require('./src/routes/admin-route')(app);
 require('./src/routes/table-route')(app);
 

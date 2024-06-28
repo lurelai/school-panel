@@ -50,7 +50,6 @@ CREATE TABLE IF NOT EXISTS Classes(
 );
 
 
-/*
 CREATE TABLE IF NOT EXISTS Grade(
 	ID varchar(30),
 	grades JSONB,
@@ -59,6 +58,7 @@ CREATE TABLE IF NOT EXISTS Grade(
 	FOREIGN KEY(class) REFERENCES Classes(ID),
 	PRIMARY KEY(ID)
 );
+
 
 CREATE TABLE IF NOT EXISTS Students(
 	ID varchar(30),
@@ -69,5 +69,4 @@ CREATE TABLE IF NOT EXISTS Students(
 
 	PRIMARY KEY(ID)
 );
-*/
 
