@@ -49,12 +49,15 @@ const uClass = async (req, res)=>{
 	if(isArrayWay === undefined)
 		return res.send({type: 'err', body: 'you need to specify a way'});
 
+	if(!id)
+		return res.send({type: 'err', body: 'you need to specify the id'});
+
 	// if the way to update don't need array (the most simple)
 	if(isArrayWay === false){
 		const { name, yearId, schoolYearId, itinerary } = req.body;
 
 		// verify
-		if(!id && !name && !yearId && !schoolYearId && !itinerary)
+		if(!name && !yearId && !schoolYearId && !itinerary)
 			return res.send({type: 'err', body: 'you need to specify a field'});
 
 
