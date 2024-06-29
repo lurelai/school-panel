@@ -40,7 +40,7 @@ router.put('/classes/update', uClass);
 // table: student
 router.post('/students/create', cStudent);
 router.get('/students/read', rStudent);
-router.put('/students/udpate', uStudent);
+router.put('/students/update', uStudent);
 
 module.exports = app=>app.use('/tables-way', router);
 

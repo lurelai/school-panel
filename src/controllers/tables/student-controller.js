@@ -2,6 +2,7 @@
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 const getTable = require('../../services/get-table-service');
+const { updateTableSimple } = require('../../services/update-table-service');
 
 const cStudent = async (req, res)=>{
 	const { name, age, sex } = req.body;
