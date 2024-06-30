@@ -2,7 +2,7 @@
 const createId = require('../../services/create-id-service');
 const insertTable = require('../../services/insert-table-service');
 const getTable = require('../../services/get-table-service');
-const { updateTableSimple } = require('../../services/update-table-service');
+const { updateTableSimple, updateTableArray } = require('../../services/update-table-service');
 
 const cStudent = async (req, res)=>{
 	const { name, age, sex } = req.body;
@@ -70,6 +70,17 @@ const uStudent = async (req, res)=>{
 
 		return res.send(result);
 	}
+
+	// if is the array way
+	const { classesArray } = req.body;
+
+	if(!classesArray)
+		return res.send({type: 'err', body: 'you need to specify a field'});
+
+	const result = await updateTableArray("UPDATE Students SET", {
+		id: id,
+		arrayTyped: [['classes', classesArray]]
+	});
 
 	return res.send(result);
 }
