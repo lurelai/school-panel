@@ -7,6 +7,7 @@ const { cSubject, rSubject, uSubject } = require('../controllers/tables/subject-
 const { cItinerary, dItinerary, rItinerary } = require('../controllers/tables/itinerary-controller');
 const { cClass, rClass, uClass } = require('../controllers/tables/class-controller.js');
 const { cStudent, rStudent, uStudent } = require('../controllers/tables/student-controller.js');
+const { cGrade } = require('../controllers/tables/grade-controller.js');
 
 // table: years
 router.post('/years/create', cYear);
@@ -36,11 +37,15 @@ router.get('/classes/read', rClass);
 router.post('/classes/create', cClass);
 router.put('/classes/update', uClass);
 
+// table: grade
+router.post('/grades/create', cGrade);
+
 
 // table: student
 router.post('/students/create', cStudent);
 router.get('/students/read', rStudent);
 router.put('/students/update', uStudent);
+
 
 module.exports = app=>app.use('/tables-way', router);
 

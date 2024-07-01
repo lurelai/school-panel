@@ -50,13 +50,13 @@ CREATE TABLE IF NOT EXISTS Classes(
 );
 
 
-CREATE TABLE IF NOT EXISTS Grade(
+CREATE TABLE IF NOT EXISTS Grades(
 	ID varchar(30),
 	grade JSONB,
-	class varchar(30) NOT NULL,
+	class_id varchar(30) NOT NULL,
 	year_id varchar(30) NOT NULL,
 
-	FOREIGN KEY(class) REFERENCES Classes(ID),
+	FOREIGN KEY(class_id) REFERENCES Classes(ID),
 	FOREIGN KEY(year_id) REFERENCES Years(ID),
 	PRIMARY KEY(ID)
 );
